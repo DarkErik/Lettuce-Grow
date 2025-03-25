@@ -48,6 +48,7 @@ public class ItemDepot : MonoBehaviour {
         return childCarriableComponent;
     }
 
+
     public void Drop() {
         isInPossession = true;
         childCarriableComponent.Drop();

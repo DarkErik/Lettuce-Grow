@@ -36,7 +36,7 @@ public class Carrieable : MonoBehaviour {
         
         if (parent != null) {
             Vector2 direction = parent.GetMovementDirection();
-            if (direction == Vector2.zero) { return; }
+            if (direction == Vector2.zero) { direction = parent.GetLastMovementDirection(); }
 
             this.transform.localPosition = new Vector3(direction.x * carryDistance, direction.y * carryDistance);
         }
