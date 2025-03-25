@@ -52,7 +52,6 @@ namespace Player {
             //controller.Interact.performed += OnInteractPerformed;
             interactButton = new InputButtonWrapper(controller.Interact);
             interactButton.onButtonDown += OnInteractPerformed;
-            interactButton.onButtonUp += OnInteractionCancelled;
         }
 
         private void OnEnable() {
@@ -66,18 +65,13 @@ namespace Player {
         #endregion
 
         private void OnInteractPerformed(InputAction.CallbackContext ctx) {
+
             interactionHitbox.enabled = true;
             interactionTimer = interactionTimeWindow;
         }
 
         private void OnInteractionCancelled(InputAction.CallbackContext ctx) {
-            interactionHitbox.enabled = false;
-            interactionTimer = 0;
-
-            if (currentlyCarried != null) {
-                currentlyCarried.Drop();
-                currentlyCarried = null;
-            }
+            
         }
 
 
@@ -107,15 +101,35 @@ namespace Player {
         private void OnTriggerEnter2D(Collider2D other) {
 
 
-            if (interactionHitbox.enabled && currentlyCarried == null) {
-                // Check it the other object can be carried
-                Carrieable carrieable = other.gameObject.GetComponent<Carrieable>();
+            if (interactionHitbox.enabled) {
 
-                if (carrieable != null && carrieable.GetIsCarrieable()) {
-                    carrieable.PickUp(this);
-                    currentlyCarried = carrieable;
+                // Check if the player is already carrying something
+                if (currentlyCarried == null) {
+
+                    // Check it the other object can be picked up from the depot
+                    ItemDepot depot = other.gameObject.GetComponent<ItemDepot>();
+
+                    if (depot != null && depot.HasPossessionOfChildObject()) {
+                        currentlyCarried = depot.PickUp(this);
+
+                        interactionHitbox.enabled = false;
+                        interactionTimer = 0;
+                    }
+
+                } else {
+
+                    ItemDepot depot = other.gameObject.GetComponent<ItemDepot>();
+
+                    if (depot != null && depot.AcceptObject(currentlyCarried.gameObject) && !depot.HasPossessionOfChildObject()) {
+                        depot.Drop();
+                        currentlyCarried = null;
+
+                        interactionHitbox.enabled = false;
+                        interactionTimer = 0;
+                    }
+                    
+
                 }
-
             }
 
 

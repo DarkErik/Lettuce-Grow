@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class Carrieable : MonoBehaviour {
 
-    [SerializeField]
-    private bool isCarrieable = true;
-
-    [SerializeField]
-    private Collider2D interactionHitbox;
 
     /// <summary>
     /// The distance relative to the player at which this object should be positioned
@@ -19,10 +14,6 @@ public class Carrieable : MonoBehaviour {
 
 
     private PlayerController parent = null;
-
-
-    public bool GetIsCarrieable() { return isCarrieable; }
-    public Collider2D GetInteractionHitbox() { return interactionHitbox; }
 
 
     public void PickUp(PlayerController parent) {
