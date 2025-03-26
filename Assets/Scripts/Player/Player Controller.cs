@@ -42,7 +42,8 @@ namespace Player {
 
         private Carrieable currentlyCarried = null;
 
-
+        [SerializeField]
+        private PlayerAnimation playerAnimation;
 
         #region Input setup logic
         private void Awake() {
@@ -83,7 +84,8 @@ namespace Player {
 
             rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
 
-
+            // Animation stuff
+            playerAnimation.ChangeRunning(directionVector != Vector2.zero);
 
             if (interactionTimer > 0) {
                 interactionTimer--;
