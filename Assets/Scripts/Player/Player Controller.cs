@@ -8,6 +8,7 @@ namespace Player {
 
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance { get; private set; }
 
         public enum CarriableItemTypes {
             invalid = -1,
@@ -26,6 +27,7 @@ namespace Player {
 
         [SerializeField]
         private float movementSpeed;
+        private bool canMove = true;
 
         /// <summary>
         /// Vector containing the current direction of movement - normalized
@@ -55,6 +57,8 @@ namespace Player {
 
         #region Input setup logic
         private void Awake() {
+            Instance = this;
+
             inputWrapper = new PlayerInputActions();
             controller = inputWrapper.Player;
 
@@ -85,11 +89,14 @@ namespace Player {
         private void FixedUpdate() {
 
             // Movement
-            if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
-            directionVector = controller.Move.ReadValue<Vector2>().normalized;
+            if (canMove) {
+                if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
+                directionVector = controller.Move.ReadValue<Vector2>().normalized;
 
-            rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
-
+                rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
+            } else {
+                directionVector = Vector2.zero;
+            }
 
 
             if (interactionTimer > 0) {
@@ -216,7 +223,13 @@ namespace Player {
         /// <returns></returns>
         public Vector2 GetLastMovementDirection() { return lastValidDirectionVector; }
 
-
+        /// <summary>
+        /// Disables or enables player movement 
+        /// </summary>
+        /// <param name="flag">new State</param>
+        public void SetCanMove(bool flag) {
+            canMove = flag;
+        }
     }
 
 }
