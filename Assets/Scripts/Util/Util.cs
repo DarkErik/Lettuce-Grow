@@ -17,6 +17,20 @@ public class Util
         return (point.x - circleCenter.x) * (point.x - circleCenter.x) + (point.y - circleCenter.y) * (point.y - circleCenter.y) <= radius * radius;
     }
 
+    public static float GetAnimationClipLength(Animator anim, string clipName) {
+        var clips = anim.GetCurrentAnimatorClipInfo(0);
+        for (int i = 0; i < clips.Length; i++) {
+            if (clips[i].clip.name == clipName) {
+                return clips[i].clip.length;
+            }
+        }
+        return -1;
+    }
+
+    public static Vector3 ClampV3IntoRect(Vector3 v, Rect r) {
+        return new Vector3(Mathf.Clamp(v.x, r.min.x, r.max.x), Mathf.Clamp(v.y, r.min.y, r.max.y));
+    }
+
     public static T TryXTimes<T>(int maxTrys, System.Func<T> doFunc, System.Func<T, bool> whileFunc) {
         for (int i = 0; i < maxTrys; i++) {
             T t = doFunc();
