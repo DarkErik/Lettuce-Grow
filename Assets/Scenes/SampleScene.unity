@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000002588e57589783268bbb67952
+  m_ApplyToSortingLayers: 000000002588e57589783268bbb67952dd79217f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -543,10 +543,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2019982363835735545, guid: 1bf41db0b6d17964daf69402aae2d64a, type: 3}
-      propertyPath: orthographic size
-      value: 2.87
-      objectReference: {fileID: 0}
     - target: {fileID: 3625811328627479073, guid: 1bf41db0b6d17964daf69402aae2d64a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -721,6 +717,10 @@ PrefabInstance:
     - target: {fileID: 7876168284811918494, guid: 04db0c38fa5e796448e03784de81ba1b, type: 3}
       propertyPath: m_Name
       value: ScreenTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876168284811918494, guid: 04db0c38fa5e796448e03784de81ba1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8307948368334914342, guid: 04db0c38fa5e796448e03784de81ba1b, type: 3}
       propertyPath: m_Pivot.x

@@ -50,3 +50,6 @@ TagManager:
   - name: Front
     uniqueID: 1383708347
     locked: 0
+  - name: Minigame
+    uniqueID: 2132900317
+    locked: 0
