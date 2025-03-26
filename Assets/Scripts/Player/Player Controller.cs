@@ -87,29 +87,34 @@ namespace Player {
 
 
 
-        private void FixedUpdate() {
+        private void FixedUpdate()
+        {
 
             // Movement
-            if (canMove) {
+            if (canMove)
+            {
                 if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
                 directionVector = controller.Move.ReadValue<Vector2>().normalized;
 
-            // Animation stuff
-            playerAnimation.ChangeRunning(directionVector != Vector2.zero);
+                // Animation stuff
+                playerAnimation.ChangeRunning(directionVector != Vector2.zero);
 
-            if (interactionTimer > 0) {
-                interactionTimer--;
+                if (interactionTimer > 0)
+                {
+                    interactionTimer--;
 
-                // Adjust the position of the interaction hitbox according to the direction
-                if (directionVector ==  Vector2.zero) { directionVector = lastValidDirectionVector; }
-                interactionHitbox.offset = directionVector * new Vector2(interactionDistance, interactionDistance);
+                    // Adjust the position of the interaction hitbox according to the direction
+                    if (directionVector == Vector2.zero) { directionVector = lastValidDirectionVector; }
+                    interactionHitbox.offset = directionVector * new Vector2(interactionDistance, interactionDistance);
 
-                if (interactionTimer == 0) { interactionHitbox.enabled = false; }
+                    if (interactionTimer == 0) { interactionHitbox.enabled = false; }
+                }
             }
-
-
+            else
+            {
+                playerAnimation.ChangeRunning(false);
+            }
         }
-
 
         private void OnTriggerEnter2D(Collider2D other) {
 
