@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -95,6 +95,9 @@ namespace Player {
             {
                 if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
                 directionVector = controller.Move.ReadValue<Vector2>().normalized;
+
+                rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
+
 
                 // Animation stuff
                 playerAnimation.ChangeRunning(directionVector != Vector2.zero);
