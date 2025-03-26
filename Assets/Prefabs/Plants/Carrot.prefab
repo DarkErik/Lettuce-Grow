@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carryDistance: 0.2
+  carryOffset: {x: 0, y: 0}
+  allowMirror: 1
 --- !u!1 &3064449632225462765
 GameObject:
   m_ObjectHideFlags: 0

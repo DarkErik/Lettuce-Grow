@@ -18,7 +18,7 @@ public class Carrieable : MonoBehaviour {
     private Vector2 carryOffset;
 
     [SerializeField]
-    private bool allowMirror;
+    private bool allowMirror = true;
 
 
     private PlayerController parent = null;

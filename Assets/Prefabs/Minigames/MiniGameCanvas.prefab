@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeToMinigamePrefabMapping:
     mapping:
-    - {fileID: 2232149158761717703, guid: 51533f52fb3271b4781ba4c97087a061, type: 3}
+    - {fileID: 6634756310742502330, guid: 3b9d556ea5394a64884c3072bec9f096, type: 3}
     - {fileID: 0}
     - {fileID: 0}
   targetScale: {x: 6.329009, y: 4.741764}
