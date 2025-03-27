@@ -255,6 +255,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7039466395700683270}
+  - component: {fileID: 7865559020754975879}
+  - component: {fileID: 6163786799561032602}
+  - component: {fileID: 6883157723795883319}
   m_Layer: 0
   m_Name: Salat
   m_TagString: Untagged
@@ -270,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5327795164214993781}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -278,6 +281,47 @@ Transform:
   - {fileID: 3616743961982635242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7865559020754975879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327795164214993781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91679ce8becc5e5418e45575bbd3de7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantData: {fileID: 11400000, guid: 214224ab3b2f65a4aa46af4c369c7b18, type: 2}
+--- !u!114 &6163786799561032602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327795164214993781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2a8359005294b4795fc86e0367aca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carryDistance: 0.2
+  carryOffset: {x: 0, y: 0}
+  allowMirror: 1
+--- !u!114 &6883157723795883319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327795164214993781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a9174d0ff6d5a499e03c2e87de8b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativePositionInFlowerpot: {x: 0, y: 0}
 --- !u!1 &8388580678744198220
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798209716022416387}
+  - component: {fileID: 9064817776425583291}
+  - component: {fileID: 2373028433682142165}
+  - component: {fileID: 375352003387662331}
   m_Layer: 0
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -32,6 +35,47 @@ Transform:
   - {fileID: 6793991071454888228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9064817776425583291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365633185538144639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91679ce8becc5e5418e45575bbd3de7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantData: {fileID: 11400000, guid: d5296cf01e6482442849337eee60ba6f, type: 2}
+--- !u!114 &2373028433682142165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365633185538144639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2a8359005294b4795fc86e0367aca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carryDistance: 0.2
+  carryOffset: {x: 0, y: 0}
+  allowMirror: 1
+--- !u!114 &375352003387662331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365633185538144639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a9174d0ff6d5a499e03c2e87de8b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativePositionInFlowerpot: {x: 0, y: 0}
 --- !u!1 &1509209311408094655
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +88,7 @@ GameObject:
   - component: {fileID: 4547240813052281908}
   - component: {fileID: 3624594434559997732}
   m_Layer: 0
-  m_Name: Anim Base
+  m_Name: Anim Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

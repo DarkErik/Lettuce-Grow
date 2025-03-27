@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MinigameFrame : MonoBehaviour
 {
+    public bool WasMinigameFinished { get; private set; } = false;
+
     [SerializeField] private EnumDataMapping<GameObject, PlantNeed> typeToMinigamePrefabMapping;
     [SerializeField] private Vector2 targetScale;
     [SerializeField] private Transform minigameBase;
@@ -35,7 +37,8 @@ public class MinigameFrame : MonoBehaviour
     private IEnumerator _Close() {
         yield return new WaitForSeconds(closeAnimTime);
         PlayerController.Instance.SetCanMove(true);
-        Destroy(this.gameObject);
+
+        WasMinigameFinished = true;
     }
 
     public Rect GetBounds() {
