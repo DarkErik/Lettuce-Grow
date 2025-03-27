@@ -6,7 +6,15 @@ using UnityEngine;
 public class SeedDispenser : MonoBehaviour {
 
     [SerializeField]
-    private GameObject seed;
+    private GameObject seedPrefab;
+
+
+    [SerializeField]
+    private Color seedColor;
+
+
+    [SerializeField]
+    private GameObject plantPrefab;
 
     // Create a new seed when one is picked up
     private GameObject dispensedSeed;
@@ -17,6 +25,10 @@ public class SeedDispenser : MonoBehaviour {
 
     [SerializeField]
     private uint count;
+
+
+    [SerializeField, Tooltip("The gameobject containing the seed sprite - Used to display an empty/filled box")]
+    private GameObject contentVisual;
 
 
 
@@ -30,20 +42,23 @@ public class SeedDispenser : MonoBehaviour {
     /// <returns></returns>
     public bool AcceptObject(GameObject obj) { return obj == dispensedSeed; }
 
+    public GameObject GetPlantPrefab() { return plantPrefab; }
+
 
     public Carrieable PickUp(PlayerController parent) {
 
         if (!HasSeeds()) { throw new System.Exception("Seed dispenser is empty"); }
 
 
-        dispensedSeed = GameObject.Instantiate(seed);
+        dispensedSeed = GameObject.Instantiate(seedPrefab);
         dispensedSeed.transform.position = new Vector3(100, 100, 0);        // Spawn out of bounds so it isn't visible until the first fixed update frame
+        dispensedSeed.GetComponent<SpriteRenderer>().color = seedColor;
         dispensedSeedCarriableComponent = dispensedSeed.GetComponent<Carrieable>();
 
         dispensedSeedCarriableComponent.PickUp(parent);
 
         count--;
-        if (count == 0) { seed.SetActive(false); }
+        if (count == 0) { contentVisual.SetActive(false); }
 
         return dispensedSeedCarriableComponent;
     }
@@ -57,8 +72,8 @@ public class SeedDispenser : MonoBehaviour {
         dispensedSeed = null;
         dispensedSeedCarriableComponent = null;
 
-        Debug.Log(seed.activeInHierarchy);
-        if (count > 0 && !seed.activeInHierarchy) { seed.SetActive(true); }
+
+        if (count > 0 && !contentVisual.activeInHierarchy) { contentVisual.SetActive(true); }
     }
 
 

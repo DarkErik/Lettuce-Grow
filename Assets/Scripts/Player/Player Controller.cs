@@ -15,6 +15,9 @@ namespace Player {
             none = 0,
             unspecifiedObject = 1,
             seed,
+            wateringCan,
+            banjo,
+            flySwatter,
         }
 
 
@@ -50,8 +53,14 @@ namespace Player {
         private uint interactionTimeWindow = 1;
         private uint interactionTimer = 0;
 
+
         private Carrieable currentlyCarried = null;
         private CarriableItemTypes currentlyCarriedType = CarriableItemTypes.none;
+        /// <summary>
+        /// The source where this object has been picked up (Depot, Dispenser, etc.)
+        /// </summary>
+        private GameObject pickupSource;
+
 
         [SerializeField]
         private PlayerAnimation playerAnimation;
@@ -136,7 +145,8 @@ namespace Player {
 
                     if (depot != null && depot.HasPossessionOfChildObject()) {
                         currentlyCarried = depot.PickUp(this);
-                        currentlyCarriedType = CarriableItemTypes.unspecifiedObject;
+                        currentlyCarriedType = depot.GetItemType();
+                        pickupSource = depot.gameObject;
 
                         interactionHitbox.enabled = false;
                         interactionTimer = 0;
@@ -148,6 +158,7 @@ namespace Player {
                     if (seedDispenser != null && seedDispenser.HasSeeds()) {
                         currentlyCarried = seedDispenser.PickUp(this);
                         currentlyCarriedType = CarriableItemTypes.seed;
+                        pickupSource = seedDispenser.gameObject;
 
                         interactionHitbox.enabled = false;
                         interactionTimer = 0;
@@ -158,18 +169,22 @@ namespace Player {
 
                     switch (currentlyCarriedType) {
 
-                        case CarriableItemTypes.unspecifiedObject: {
+                        case CarriableItemTypes.wateringCan:
+                        case CarriableItemTypes.banjo:
+                        case CarriableItemTypes.flySwatter: {
+
                                 ItemDepot depot = other.gameObject.GetComponent<ItemDepot>();
 
                                 if (depot != null && depot.AcceptObject(currentlyCarried.gameObject) && !depot.HasPossessionOfChildObject()) {
                                     depot.Drop();
 
                                     ResetCarrying();
+                                    break;
                                 }
 
                                 PlantProgressionManager plantProgressionManager = other.gameObject.GetComponent<PlantProgressionManager>();
 
-                                if (plantProgressionManager.GetIsNeedCurrentlyActive() && canMove) {
+                                if (plantProgressionManager != null && plantProgressionManager.GetIsNeedCurrentlyActive() && canMove) {
                                     // TODO: use plantProgressionManager.GetObjectForCurrentNeed to check for the right object if more objects are available
                                     plantProgressionManager.OnObjectForNeedProvided();
                                 }
@@ -180,19 +195,33 @@ namespace Player {
 
                         case CarriableItemTypes.seed: {
                                 FlowerpotBaseLogic pot = other.gameObject.GetComponent<FlowerpotBaseLogic>();
+                                GameObject plant = pickupSource.GetComponent<SeedDispenser>().GetPlantPrefab();
 
-                                if (pot != null && pot.CanPlant(currentlyCarried.gameObject)) {
-                                    pot.Plant(currentlyCarried.gameObject);
-                                    currentlyCarried.Drop();
+
+                                if (pot != null && pot.CanPlant(plant)) {
+                                    pot.Plant(GameObject.Instantiate(plant));
+                                    GameObject.Destroy(currentlyCarried.gameObject);
 
                                     ResetCarrying();
-
                                 }
 
                                 SeedDispenser seedDispenser = other.gameObject.GetComponent<SeedDispenser>();
 
                                 if (seedDispenser != null && seedDispenser.AcceptObject(currentlyCarried.gameObject)) {
                                     seedDispenser.Drop();
+
+                                    ResetCarrying();
+                                }
+
+                                break;
+                            }
+
+
+                        case CarriableItemTypes.unspecifiedObject: {
+                                ItemDepot depot = other.gameObject.GetComponent<ItemDepot>();
+
+                                if (depot != null && depot.AcceptObject(currentlyCarried.gameObject) && !depot.HasPossessionOfChildObject()) {
+                                    depot.Drop();
 
                                     ResetCarrying();
                                 }
@@ -222,6 +251,7 @@ namespace Player {
         private void ResetCarrying() {
             currentlyCarried = null;
             currentlyCarriedType = CarriableItemTypes.none;
+            pickupSource = null;
 
             interactionHitbox.enabled = false;
             interactionTimer = 0;
