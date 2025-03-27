@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2a8359005294b4795fc86e0367aca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carryDistance: 0.2
+  carryDistance: 0.3
   carryOffset: {x: 0, y: 0}
   allowMirror: 1
 --- !u!114 &2931174882664257865
@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a9174d0ff6d5a499e03c2e87de8b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   relativePositionInFlowerpot: {x: 0, y: 0}
 --- !u!114 &718477220193870743
 MonoBehaviour:

@@ -135,13 +135,14 @@ MonoBehaviour:
   particleSystemHandler: {fileID: 8252278335154581721}
   yPosition: 1.85
   wateringCanTiltAngle: 310
-  wateringCanTiltSpeed: 2
+  wateringCanTiltSpeed: 5
   plantPrefab: {fileID: 6633840687983738108, guid: 7a25cfc28c09ef44b9f7e188c9ca7059, type: 3}
   plantY: -1.7
   plantWidth: 0.2
   positionOffset: {x: 1.1, y: 0.2}
   numPlants: {x: 2, y: 4}
   normDistrValues: {x: 3, y: 0.6}
+  closeDelay: 0.5
 --- !u!1 &8153483273154342457
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +755,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1013,7 +1014,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2

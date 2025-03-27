@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childObject: {fileID: 2691396003399592203}
-  type: 5
+  type: 6
   interactionHitbox: {fileID: 5557164634980118637}
   childObjectPosition: {x: 0, y: 0.425}
 --- !u!61 &5557164634980118637

@@ -53,6 +53,10 @@ public class WateringMinigame : GenericMinigame {
     [SerializeField, Tooltip("The mean and standard deviation for selecting the number of plants")]
     private Vector2 normDistrValues;
 
+
+    [SerializeField, Tooltip("Delay for closing the minigame after finishing")]
+    private float closeDelay;
+
     #endregion
 
     private bool isRunning;
@@ -175,7 +179,7 @@ public class WateringMinigame : GenericMinigame {
         remainingPlants--;
 
         if (remainingPlants == 0) {
-            Close();
+            this.Invoke(nameof(Close), closeDelay);
         }
     }
 

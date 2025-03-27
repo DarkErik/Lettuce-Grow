@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }

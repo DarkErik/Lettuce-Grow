@@ -15,6 +15,7 @@ namespace Player {
             none = 0,
             unspecifiedObject = 1,
             seed,
+            finishedPlant,
             wateringCan,
             banjo,
             flySwatter,
@@ -148,8 +149,8 @@ namespace Player {
                         currentlyCarriedType = depot.GetItemType();
                         pickupSource = depot.gameObject;
 
-                        interactionHitbox.enabled = false;
-                        interactionTimer = 0;
+                        ResetInteraction();
+                        return;
                     }
 
                     // Check it the other object can be picked up from the depot
@@ -160,8 +161,33 @@ namespace Player {
                         currentlyCarriedType = CarriableItemTypes.seed;
                         pickupSource = seedDispenser.gameObject;
 
-                        interactionHitbox.enabled = false;
-                        interactionTimer = 0;
+                        ResetInteraction();
+                        return;
+                    }
+
+                    // Check it the other object can be picked up from a flower pot
+                    FlowerpotBaseLogic flowerPot = other.gameObject.GetComponent<FlowerpotBaseLogic>();
+
+                    if (flowerPot != null) {
+                        if (flowerPot.CanBeHarvested()) {
+                            currentlyCarried = flowerPot.Harvest().GetComponent<Carrieable>();
+                            currentlyCarried.PickUp(this);
+                            currentlyCarriedType = CarriableItemTypes.finishedPlant;
+                            pickupSource = flowerPot.gameObject;
+
+                            ResetInteraction();
+                            return;
+
+                        } else if (!flowerPot.IsEmpty()) {
+                            currentlyCarried = flowerPot.PickUp().GetComponent<Carrieable>();
+                            currentlyCarried.PickUp(this);
+                            currentlyCarriedType = CarriableItemTypes.finishedPlant;
+                            pickupSource = flowerPot.gameObject;
+
+                            ResetInteraction();
+                            return;
+                        }
+                        
                     }
 
 
@@ -203,6 +229,7 @@ namespace Player {
                                     GameObject.Destroy(currentlyCarried.gameObject);
 
                                     ResetCarrying();
+                                    break;
                                 }
 
                                 SeedDispenser seedDispenser = other.gameObject.GetComponent<SeedDispenser>();
@@ -211,7 +238,40 @@ namespace Player {
                                     seedDispenser.Drop();
 
                                     ResetCarrying();
+                                    break;
                                 }
+
+                                break;
+                            }
+
+                        case CarriableItemTypes.finishedPlant: {
+                                FlowerpotBaseLogic pot = other.gameObject.GetComponent<FlowerpotBaseLogic>();
+
+                                if (pot != null) {
+                                    
+                                    if (pot.IsEmpty()) {
+                                        pot.Deposit(currentlyCarried.gameObject);
+
+                                        ResetCarrying();
+                                        break;
+                                    } else if (pot.CanBeSwapped(currentlyCarried.gameObject)) {
+                                        currentlyCarried = pot.Swap(currentlyCarried.gameObject).GetComponent<Carrieable>();
+                                        currentlyCarried.PickUp(this);
+
+                                        ResetInteraction();
+                                        break;
+                                    }
+                                }
+
+                                SellBox sellBox = other.gameObject.GetComponent<SellBox>();
+
+                                if (sellBox != null && sellBox.CanBeSold(currentlyCarried.gameObject)) {
+                                    sellBox.Sell(currentlyCarried.gameObject);
+
+                                    ResetCarrying();
+                                    break;
+                                }
+
 
                                 break;
                             }
@@ -248,13 +308,17 @@ namespace Player {
         }
 
 
+        private void ResetInteraction() {
+            interactionHitbox.enabled = false;
+            interactionTimer = 0;
+        }
+
         private void ResetCarrying() {
             currentlyCarried = null;
             currentlyCarriedType = CarriableItemTypes.none;
             pickupSource = null;
 
-            interactionHitbox.enabled = false;
-            interactionTimer = 0;
+            ResetInteraction();
         }
 
 

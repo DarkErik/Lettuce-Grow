@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b89625c2307f7f4a884b615a89895c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressionManager: {fileID: 8019510569048928744}
   interactionHitbox: {fileID: 8983636710834194357}
   plant: {fileID: 0}
 --- !u!58 &8983636710834194357
