@@ -102,7 +102,8 @@ public class PlantProgressionManager : MonoBehaviour
             globalMinigameHasStarted = false;
             currentGrothPhase = GrothPhase.PROGRESSING;
 
-            bubble.Close();           
+            bubble.Close();
+            flowerpotBaseLogic.ChangePannicMode();
         }
     }
 
@@ -115,6 +116,8 @@ public class PlantProgressionManager : MonoBehaviour
 
         currentGrothPhase = GrothPhase.REGRESSING;
         isNeedCurrentlyActive = true;
+
+        flowerpotBaseLogic.ChangePannicMode();
     }
 
 
