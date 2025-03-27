@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,7 +53,8 @@ namespace Player {
         private Carrieable currentlyCarried = null;
         private CarriableItemTypes currentlyCarriedType = CarriableItemTypes.none;
 
-
+        [SerializeField]
+        private PlayerAnimation playerAnimation;
 
         #region Input setup logic
         private void Awake() {
@@ -86,32 +87,41 @@ namespace Player {
 
 
 
-        private void FixedUpdate() {
+        private void FixedUpdate()
+        {
 
             // Movement
-            if (canMove) {
+            if (canMove)
+            {
                 if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
                 directionVector = controller.Move.ReadValue<Vector2>().normalized;
 
                 rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
-            } else {
-                directionVector = Vector2.zero;
+
+
+                // Animation stuff
+                if (playerAnimation != null) {
+                    playerAnimation.ChangeRunning(directionVector != Vector2.zero);
+                }
+                
+
+                if (interactionTimer > 0)
+                {
+                    interactionTimer--;
+
+                    // Adjust the position of the interaction hitbox according to the direction
+                    if (directionVector == Vector2.zero) { directionVector = lastValidDirectionVector; }
+                    interactionHitbox.offset = directionVector * new Vector2(interactionDistance, interactionDistance);
+
+                    if (interactionTimer == 0) { interactionHitbox.enabled = false; }
+                }
             }
-
-
-            if (interactionTimer > 0) {
-                interactionTimer--;
-
-                // Adjust the position of the interaction hitbox according to the direction
-                if (directionVector ==  Vector2.zero) { directionVector = lastValidDirectionVector; }
-                interactionHitbox.offset = directionVector * new Vector2(interactionDistance, interactionDistance);
-
-                if (interactionTimer == 0) { interactionHitbox.enabled = false; }
+            else
+            {
+                if (playerAnimation != null)
+                    playerAnimation.ChangeRunning(false);
             }
-
-
         }
-
 
         private void OnTriggerEnter2D(Collider2D other) {
 
