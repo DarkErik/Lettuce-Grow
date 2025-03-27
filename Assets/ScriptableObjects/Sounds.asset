@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b65f09e53002c47af74ffad114aea5, type: 3}
+  m_Name: Sounds
+  m_EditorClassIdentifier: 
+  footstep:
+  - {fileID: 8300000, guid: 18f279920f4c9ed46b3f24482d9f728c, type: 3}
+  - {fileID: 8300000, guid: b6b40c33174b12e44ae33f454d60fed9, type: 3}
+  - {fileID: 8300000, guid: 536e957f54567e046bf7adea6a9319be, type: 3}
+  - {fileID: 8300000, guid: 1ba52a834602ee8429ac46e0c2fc7d4c, type: 3}
+  itemGrabbed: []
+  itemPlaced: []
+  plantPlanted: []
+  plantFinishedGrowing: []
+  plantSold: []
+  platsch: []
