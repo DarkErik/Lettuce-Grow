@@ -15,11 +15,14 @@ MonoBehaviour:
   plantType: 1
   neededGrothTime: 10
   regressionSpeedFactor: 1
-  initalNeedDelayAfterPlanting: 0
-  minNeedTime: 0
-  maxNeedTime: 0
+  initalNeedDelayAfterPlanting: 2
+  minNeedTime: 3
+  maxNeedTime: 5
   plantNeedMapping:
     mapping:
     - pickChance: 1
+      neededCarriableItem: 1
     - pickChance: 1
+      neededCarriableItem: 1
     - pickChance: 1
+      neededCarriableItem: 1

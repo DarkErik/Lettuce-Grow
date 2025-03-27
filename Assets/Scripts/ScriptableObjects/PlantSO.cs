@@ -18,6 +18,7 @@ public class PlantSO : ScriptableObject
     public class NeedWrapper
     {
         public float pickChance;
+        public Player.PlayerController.CarriableItemTypes neededCarriableItem;
     }
 
     [Header("Needs")]

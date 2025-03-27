@@ -136,7 +136,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
 --- !u!61 &1886955708157570236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,5 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3cfa5601399d94cb2946e7f99289a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 7991868815542350093, guid: 1b3cff844c68d1f408b8f640e6f0cc4b, type: 3}
-  bubble: {fileID: 2114273208592358836, guid: 826f4f09d44a8fc4c800921c2d4fa0ed, type: 3}
+  minigameGameObject: {fileID: 7991868815542350093, guid: 1b3cff844c68d1f408b8f640e6f0cc4b, type: 3}
+  bubbleGameObject: {fileID: 2114273208592358836, guid: 826f4f09d44a8fc4c800921c2d4fa0ed, type: 3}
+  dustCloudPrefab: {fileID: 9216244037327868860, guid: 1b817b432cb3e0a4699890f863f8b157, type: 3}
