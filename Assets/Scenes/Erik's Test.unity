@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 77743819}
   - component: {fileID: 77743820}
   m_Layer: 0
-  m_Name: Box_2
+  m_Name: Dollar Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,7 +1511,7 @@ GameObject:
   - component: {fileID: 1098735206}
   - component: {fileID: 1098735205}
   m_Layer: 0
-  m_Name: Box_0
+  m_Name: Sell Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

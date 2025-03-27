@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8521882411670847084}
   - component: {fileID: 7506996417402582286}
   m_Layer: 0
-  m_Name: Item Depot
+  m_Name: Generic Item Depot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
