@@ -100,7 +100,10 @@ namespace Player {
 
 
                 // Animation stuff
-                playerAnimation.ChangeRunning(directionVector != Vector2.zero);
+                if (playerAnimation != null) {
+                    playerAnimation.ChangeRunning(directionVector != Vector2.zero);
+                }
+                
 
                 if (interactionTimer > 0)
                 {
@@ -115,7 +118,8 @@ namespace Player {
             }
             else
             {
-                playerAnimation.ChangeRunning(false);
+                if (playerAnimation != null)
+                    playerAnimation.ChangeRunning(false);
             }
         }
 

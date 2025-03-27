@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FlowerpotBaseLogic : MonoBehaviour {
 
@@ -13,6 +14,11 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     private PlantLogic plantLogic;
 
     private bool isPlanted = false;
+
+    public class OnPlantedEventArgs : EventArgs {
+        public PlantSO plantData;
+    }
+    public event EventHandler<OnPlantedEventArgs> OnPlanted;
 
     
     /// <summary>
@@ -33,6 +39,8 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         this.plant = plant;
         plantLogic = pl;
         isPlanted = true;
+
+        OnPlanted?.Invoke(this, new OnPlantedEventArgs { plantData = plant.GetComponent<PlantDataWrapper>().PlantData});
 
         Vector2 relativePosition = plantLogic.GetRelativePositionForFlowerpot();
 

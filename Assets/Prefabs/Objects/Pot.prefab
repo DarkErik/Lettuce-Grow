@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8343024541129259325}
   - component: {fileID: 8983636710834194357}
   - component: {fileID: 1886955708157570236}
+  - component: {fileID: 8019510569048928744}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -181,3 +182,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8019510569048928744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865863605876749847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3cfa5601399d94cb2946e7f99289a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigame: {fileID: 7991868815542350093, guid: 1b3cff844c68d1f408b8f640e6f0cc4b, type: 3}
+  bubble: {fileID: 2114273208592358836, guid: 826f4f09d44a8fc4c800921c2d4fa0ed, type: 3}
