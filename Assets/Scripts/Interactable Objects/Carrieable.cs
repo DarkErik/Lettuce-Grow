@@ -51,7 +51,7 @@ public class Carrieable : MonoBehaviour {
             if (allowMirror) {
 
                 float adjustedAngle = Mathf.Atan2(direction.y, direction.x);
-                Debug.Log(adjustedAngle + " " + (Mathf.Rad2Deg * adjustedAngle));
+                //Debug.Log(adjustedAngle + " " + (Mathf.Rad2Deg * adjustedAngle));
 
                 if (adjustedAngle < -Mathf.PI / 2 - 0.1 || adjustedAngle > Mathf.PI / 2 + 0.1) {
                     this.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);

@@ -49,4 +49,12 @@ public class FlowerpotBaseLogic : MonoBehaviour {
 
     }
 
+    public void DestroyPlant() {
+        Destroy(this.plant);
+
+        plant = null;
+        plantLogic = null;
+        isPlanted = false;
+    }
+
 }

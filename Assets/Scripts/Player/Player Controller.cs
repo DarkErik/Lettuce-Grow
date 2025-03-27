@@ -167,6 +167,13 @@ namespace Player {
                                     ResetCarrying();
                                 }
 
+                                PlantProgressionManager plantProgressionManager = other.gameObject.GetComponent<PlantProgressionManager>();
+
+                                if (plantProgressionManager.GetIsNeedCurrentlyActive() && canMove) {
+                                    // TODO: use plantProgressionManager.GetObjectForCurrentNeed to check for the right object if more objects are available
+                                    plantProgressionManager.OnObjectForNeedProvided();
+                                }
+
                                 break;
                             }
 
