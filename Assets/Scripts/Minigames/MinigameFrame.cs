@@ -16,8 +16,6 @@ public class MinigameFrame : MonoBehaviour
     private float closeAnimTime = -1;
     private void Awake() {
         closeAnimTime = Util.GetAnimationClipLength(anim, "Close");
-
-        Init(PlantNeed.WATER);
     }
 
     public void Init(PlantNeed minigameType) {
@@ -31,14 +29,21 @@ public class MinigameFrame : MonoBehaviour
 
     public void Close() {
         anim.SetTrigger("close");
-        StartCoroutine(_Close());
+        StartCoroutine(_Close(false));
     }
 
-    private IEnumerator _Close() {
+    public void ForceClose() {
+        anim.SetTrigger("close");
+        StartCoroutine(_Close(true));
+    }
+
+    private IEnumerator _Close(bool destroy) {
         yield return new WaitForSeconds(closeAnimTime);
         PlayerController.Instance.SetCanMove(true);
 
         WasMinigameFinished = true;
+
+        if (destroy) Destroy(this.gameObject);
     }
 
     public Rect GetBounds() {
