@@ -75,10 +75,6 @@ public class WateringMinigame : GenericMinigame {
         controller.Enable();
     }
 
-    private void OnEnable() {
-        controller.Enable();
-    }
-
     private void OnDisable() {
         controller.Disable();
     }
@@ -96,6 +92,9 @@ public class WateringMinigame : GenericMinigame {
         remainingPlants = plants.Length;
 
         isRunning = true;
+
+        // this is bad. Dont do this. This should belong into OnEnable if it would only work :(
+        controller.Enable();
     }
 
 

@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 7865559020754975879}
   - component: {fileID: 6163786799561032602}
   - component: {fileID: 6883157723795883319}
+  - component: {fileID: 1121738967072995190}
   m_Layer: 0
   m_Name: Salat
   m_TagString: Untagged
@@ -322,6 +323,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativePositionInFlowerpot: {x: 0, y: 0}
+--- !u!114 &1121738967072995190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327795164214993781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c48983754bfc94b8c42cc3be719dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animBase: {fileID: 1604098384148749196}
+  animFace: {fileID: 8336049646167381639}
+  isPanic: 0
 --- !u!1 &8388580678744198220
 GameObject:
   m_ObjectHideFlags: 0
