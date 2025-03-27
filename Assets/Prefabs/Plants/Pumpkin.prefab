@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9064817776425583291}
   - component: {fileID: 2373028433682142165}
   - component: {fileID: 375352003387662331}
+  - component: {fileID: 5781837852778137173}
   m_Layer: 0
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -76,6 +77,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativePositionInFlowerpot: {x: 0, y: 0}
+--- !u!114 &5781837852778137173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365633185538144639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c48983754bfc94b8c42cc3be719dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animBase: {fileID: 3624594434559997732}
+  animFace: {fileID: 442104637369356947}
+  isPanic: 0
 --- !u!1 &1509209311408094655
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +104,7 @@ GameObject:
   - component: {fileID: 4547240813052281908}
   - component: {fileID: 3624594434559997732}
   m_Layer: 0
-  m_Name: Anim Face
+  m_Name: Anim Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

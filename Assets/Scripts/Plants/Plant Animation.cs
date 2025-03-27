@@ -28,7 +28,7 @@ public class PlantAnimation : MonoBehaviour
     }
 
     // call ChangeRunning when the Player is either starting to move or when it stops moving
-    public void ChangePanic(bool panics)
+    public void ChangePanic()
     {
         isPanic = !isPanic;
         animBase.SetBool("isNeedy", isPanic);
