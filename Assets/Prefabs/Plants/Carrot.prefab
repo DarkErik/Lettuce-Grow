@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7385367729698784829}
   - component: {fileID: -917665431969802511}
   - component: {fileID: -7194162096186922602}
+  - component: {fileID: 6708070215072097536}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -147,6 +148,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carryDistance: 0.2
+--- !u!114 &6708070215072097536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906096740354099183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91679ce8becc5e5418e45575bbd3de7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantData: {fileID: 11400000, guid: 709b75d83b2b24a4eaf0cf35099709b9, type: 2}
 --- !u!1 &3064449632225462765
 GameObject:
   m_ObjectHideFlags: 0
