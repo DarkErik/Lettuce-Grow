@@ -12,6 +12,8 @@ public class PlantProgressionManager : MonoBehaviour
     private PlantsNeedsBouble bubble;
     [SerializeField] private GameObject dustCloudPrefab;
 
+    [SerializeField] private ProgressBarUI progressBarUI;
+
     private FlowerpotBaseLogic flowerpotBaseLogic;
     private PlantSO plantData;
 
@@ -19,7 +21,7 @@ public class PlantProgressionManager : MonoBehaviour
     private bool isPlantPlanted;
     public bool IsPlantReadyToHarvest { private set; get; }
 
-    private enum GrothPhase { NOCHANGE, PROGRESSING, REGRESSING }
+    public enum GrothPhase { NOCHANGE, PROGRESSING, REGRESSING }
     private GrothPhase currentGrothPhase;
 
     private Coroutine needTimer;
@@ -35,6 +37,8 @@ public class PlantProgressionManager : MonoBehaviour
         flowerpotBaseLogic = GetComponent<FlowerpotBaseLogic>();
         isPlantPlanted = false;
         currentGrothPhase = GrothPhase.NOCHANGE;
+
+        progressBarUI.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -54,6 +58,7 @@ public class PlantProgressionManager : MonoBehaviour
         currentGrothProgress = 0;
         minigameHasStarted = false;
         IsPlantReadyToHarvest = false;
+        progressBarUI.gameObject.SetActive(true);
 
         Debug.Log("Plant Progression Started");
 
@@ -138,6 +143,7 @@ public class PlantProgressionManager : MonoBehaviour
                
                 isNeedCurrentlyActive = false;
                 bubble.Close();
+                progressBarUI.gameObject.SetActive(false);
                 
                 if (minigameHasStarted) {
                     minigameHasStarted = false;
@@ -183,5 +189,15 @@ public class PlantProgressionManager : MonoBehaviour
 
     public void Harvest() {
         IsPlantReadyToHarvest = false;
+        progressBarUI.gameObject.SetActive(false);
+    }
+
+    public float GetGrothProgressInPercent()
+    {
+        return currentGrothProgress / plantData.neededGrothTime;
+    }
+
+    public GrothPhase GetCurrentGrothPhase() { 
+        return currentGrothPhase;
     }
 }
