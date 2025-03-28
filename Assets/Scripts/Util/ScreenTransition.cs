@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class ScreenTransition : MonoBehaviour
 {
     public static ScreenTransition Instance { get; private set; }
-    private float fadeOutTime = 0.5f;
+    private float fadeOutTime = 1f;
     [SerializeField] private Animator anim;
 
     private void Awake() {
         Instance = this;
+        Debug.Log("INstance set!");
         var clips = anim.GetCurrentAnimatorClipInfo(0);
         for (int i = 0; i < clips.Length; i++) {
             if (clips[i].clip.name == "FadeIn") {

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI carrotProgress;
     [SerializeField] private TextMeshProUGUI pumpkinProgress;
 
+    [SerializeField] private TextMeshProUGUI dayBannerTxt;
+
     [SerializeField] private Image timePassedProgressBar;
 
     private int saladAmount = -1;
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
         AddSalad();
         AddCarrot();
         AddPumpkin();
+
+        dayBannerTxt.text = "DAY " + (currentLevel + 1);
     }
 
     public void Update() {

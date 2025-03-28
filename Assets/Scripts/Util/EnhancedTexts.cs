@@ -41,8 +41,8 @@ public class EnhancedTexts : MonoBehaviour
     public void SetText(string txt) {
         formatSegments.Clear();
         this.text = ParseTxtRecursice(txt, 0);
-        textfield.text = txt;
-        textShownUntil = txt.Length;
+        textfield.text = this.text;
+        textShownUntil = this.text.Length;
     }
 
     public void StartTyping() {
