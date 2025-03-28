@@ -5,7 +5,7 @@ using TMPro;
 
 public class EnhancedTexts : MonoBehaviour
 {
-    private static readonly int TYPE_EVERY_X_FRAMES = 1;
+    private static readonly int TYPE_EVERY_X_FRAMES = 2;
     public const string WOBBLY = "wobbly", SCARY = "scary", RED = "red", GREEN = "green", BLUE = "blue", YELLOW = "yellow", RAINBOW = "rainbow";
     public static readonly string[] ALL_FORMATS = new string[] { WOBBLY, SCARY, RED, GREEN, BLUE, YELLOW, RAINBOW };
     [SerializeField] private TextMeshProUGUI textfield;
