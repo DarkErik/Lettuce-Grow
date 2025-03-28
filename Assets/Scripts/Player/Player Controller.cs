@@ -178,7 +178,7 @@ namespace Player {
                             ResetInteraction();
                             return;
 
-                        } else if (!flowerPot.IsEmpty()) {
+                        } else if (flowerPot.IsDeposited()) {
                             currentlyCarried = flowerPot.PickUp().GetComponent<Carrieable>();
                             currentlyCarried.PickUp(this);
                             currentlyCarriedType = CarriableItemTypes.finishedPlant;

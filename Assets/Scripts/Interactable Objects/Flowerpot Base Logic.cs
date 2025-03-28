@@ -68,11 +68,17 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     public bool IsEmpty() { return !isPlanted && !isDeposited; }
 
     /// <summary>
+    /// Checks whether there is a plant currently deposited in this flowerpot
+    /// </summary>
+    /// <returns></returns>
+    public bool IsDeposited() {  return isDeposited; }
+
+    /// <summary>
     /// Returns true if the given object and the plant inside the flower pot can be swapped
     /// </summary>
     /// <param name="other"></param>
     /// <returns></returns>
-    public bool CanBeSwapped(GameObject other) { return isDeposited && other.GetComponents<PlantLogic>() != null; }
+    public bool CanBeSwapped(GameObject other) { return (isDeposited || CanBeHarvested()) && other.GetComponents<PlantLogic>() != null; }
 
 
     /// <summary>
@@ -107,7 +113,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     /// <returns></returns>
     public GameObject Swap(GameObject plant) {
 
-        GameObject old = PickUp();
+        GameObject old = CanBeHarvested() ? Harvest() : PickUp();
         Deposit(plant);
 
         return old;

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2132900317
   m_SortingLayer: 3
-  m_SortingOrder: 2
+  m_SortingOrder: 8
   m_Sprite: {fileID: -316655714, guid: af7781e1659a5dc4582c8517f0280cec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &6548216315241994798
 GameObject:
@@ -131,14 +131,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   klatsche: {fileID: 2854832775076106}
+  klatscheGeschwindigkeit: 0.15
   fliegenanzahl: 5
   fly: {fileID: 183624940647246666, guid: 17f2fa9af1a2fdb4692ca4516d165afa, type: 3}
   flutsch: {fileID: 6721224100650341447, guid: 6dcf180d2fce915459c7cef582b7fbe4, type: 3}
+  klatschenanim: {fileID: 1316304889280515969}
   offset: 0.2
   fly_velocity: 1
   klatschenradius: 0.4
   klatschenoffset: {x: 0, y: 0.28, z: 0}
-  klatschenanim: {fileID: 1316304889280515969}
 --- !u!95 &1316304889280515969
 Animator:
   serializedVersion: 5

@@ -797,6 +797,15 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""2d544599-0907-427a-ab7d-aa7686b0d5bf"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -920,6 +929,17 @@ namespace Player
                     ""action"": ""PrimaryInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""402cb4e2-d256-4723-b0d0-c522c4cb1664"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1007,6 +1027,7 @@ namespace Player
             m_Minigame = asset.FindActionMap("Minigame", throwIfNotFound: true);
             m_Minigame_Move = m_Minigame.FindAction("Move", throwIfNotFound: true);
             m_Minigame_PrimaryInteract = m_Minigame.FindAction("PrimaryInteract", throwIfNotFound: true);
+            m_Minigame_MouseMovement = m_Minigame.FindAction("MouseMovement", throwIfNotFound: true);
         }
 
         ~@PlayerInputActions()
@@ -1249,12 +1270,14 @@ namespace Player
         private List<IMinigameActions> m_MinigameActionsCallbackInterfaces = new List<IMinigameActions>();
         private readonly InputAction m_Minigame_Move;
         private readonly InputAction m_Minigame_PrimaryInteract;
+        private readonly InputAction m_Minigame_MouseMovement;
         public struct MinigameActions
         {
             private @PlayerInputActions m_Wrapper;
             public MinigameActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Minigame_Move;
             public InputAction @PrimaryInteract => m_Wrapper.m_Minigame_PrimaryInteract;
+            public InputAction @MouseMovement => m_Wrapper.m_Minigame_MouseMovement;
             public InputActionMap Get() { return m_Wrapper.m_Minigame; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1270,6 +1293,9 @@ namespace Player
                 @PrimaryInteract.started += instance.OnPrimaryInteract;
                 @PrimaryInteract.performed += instance.OnPrimaryInteract;
                 @PrimaryInteract.canceled += instance.OnPrimaryInteract;
+                @MouseMovement.started += instance.OnMouseMovement;
+                @MouseMovement.performed += instance.OnMouseMovement;
+                @MouseMovement.canceled += instance.OnMouseMovement;
             }
 
             private void UnregisterCallbacks(IMinigameActions instance)
@@ -1280,6 +1306,9 @@ namespace Player
                 @PrimaryInteract.started -= instance.OnPrimaryInteract;
                 @PrimaryInteract.performed -= instance.OnPrimaryInteract;
                 @PrimaryInteract.canceled -= instance.OnPrimaryInteract;
+                @MouseMovement.started -= instance.OnMouseMovement;
+                @MouseMovement.performed -= instance.OnMouseMovement;
+                @MouseMovement.canceled -= instance.OnMouseMovement;
             }
 
             public void RemoveCallbacks(IMinigameActions instance)
@@ -1364,6 +1393,7 @@ namespace Player
         {
             void OnMove(InputAction.CallbackContext context);
             void OnPrimaryInteract(InputAction.CallbackContext context);
+            void OnMouseMovement(InputAction.CallbackContext context);
         }
     }
 }
