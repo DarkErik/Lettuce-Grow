@@ -152,4 +152,12 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         isPlanted = false;
     }
 
+    /// <summary>
+    /// Changes the Mode of the Animator of the plant
+    /// </summary>
+    public void ChangePannicMode() {
+        PlantAnimation plantAnimation = plant.GetComponent<PlantAnimation>();
+        plantAnimation.ChangePanic();
+    }
+
 }

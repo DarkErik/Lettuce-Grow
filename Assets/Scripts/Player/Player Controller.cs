@@ -341,6 +341,10 @@ namespace Player {
         public void SetCanMove(bool flag) {
             canMove = flag;
         }
+
+        public bool IsPlayerIsCurrentlyMoving() { 
+            return directionVector != Vector2.zero;
+        }
     }
 
 }

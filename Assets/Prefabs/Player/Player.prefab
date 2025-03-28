@@ -516,6 +516,7 @@ GameObject:
   - component: {fileID: 2496979973877678185}
   - component: {fileID: 579212267489830345}
   - component: {fileID: 5603336779278950666}
+  - component: {fileID: 3351706775284395060}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -691,6 +692,19 @@ MonoBehaviour:
   torsoAnimator: {fileID: 4643407520268936078}
   playerAnimator: {fileID: 8756740911486665715}
   isRunning: 0
+--- !u!114 &3351706775284395060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871161330685018467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9ab572132be22418742186c01aa219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepTimerMax: 0.18
 --- !u!1 &9115506115716874726
 GameObject:
   m_ObjectHideFlags: 0
