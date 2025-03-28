@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751b9170722d7b34bb28f1d8fce8835f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredWater: {x: 4, y: 10}
+  requiredWater: {x: 1, y: 2}
   animator: {fileID: -7996198158067778602}
 --- !u!95 &-7996198158067778602
 Animator:

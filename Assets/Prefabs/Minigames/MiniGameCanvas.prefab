@@ -52,8 +52,8 @@ MonoBehaviour:
   typeToMinigamePrefabMapping:
     mapping:
     - {fileID: 6634756310742502330, guid: 3b9d556ea5394a64884c3072bec9f096, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 6548216315241994798, guid: 26d26c4a5100f004084a425a24c9868b, type: 3}
+    - {fileID: 6548216315241994798, guid: 26d26c4a5100f004084a425a24c9868b, type: 3}
   targetScale: {x: 6.329009, y: 4.741764}
   minigameBase: {fileID: 1842438476275014863}
   bgImage: {fileID: 9146122817994240780}
@@ -292,7 +292,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.01, y: 0.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

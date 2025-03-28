@@ -1,13 +1,18 @@
 using Player;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WateringMinigame : GenericMinigame {
 
-    private static PlayerInputActions inputWrapper;
-    private static PlayerInputActions.MinigameActions controller;
-    private static InputButtonWrapper interactButton;
+    private PlayerInputActions inputWrapper;
+    private PlayerInputActions.MinigameActions controller;
+    private InputButtonWrapper interactButton;
+    private MouseInputHelper mouseInputHelper;
+    private bool initializedControls;
+
 
     private static System.Random random = new System.Random();
 
@@ -33,6 +38,9 @@ public class WateringMinigame : GenericMinigame {
     [SerializeField]
     private float wateringCanTiltSpeed = 1;
 
+    [SerializeField]
+    private float wateringCanMoveSpeed = 4f;
+
 
     [SerializeField]
     private GameObject plantPrefab;
@@ -53,34 +61,37 @@ public class WateringMinigame : GenericMinigame {
     [SerializeField, Tooltip("The mean and standard deviation for selecting the number of plants")]
     private Vector2 normDistrValues;
 
+
+    [SerializeField, Tooltip("Delay for closing the minigame after finishing")]
+    private float closeDelay;
+
     #endregion
 
-    private bool isRunning;
+
     private GameObject[] plants;
     private int remainingPlants;
-
-
 
 
     #region Input setup logic
     private void InitControls() {
 
-        // Only need to initialize the input controller once
-        if (inputWrapper != null) { return; }
-
         inputWrapper = new PlayerInputActions();
         controller = inputWrapper.Minigame;
 
         interactButton = new InputButtonWrapper(controller.PrimaryInteract);
+        mouseInputHelper = new MouseInputHelper(controller.MouseMovement, TimeSpan.FromMilliseconds(150));
+
+        initializedControls = true;
         controller.Enable();
     }
 
+
     private void OnEnable() {
-        controller.Enable();
+        if (initializedControls) { controller.Enable(); }
     }
 
     private void OnDisable() {
-        controller.Disable();
+        if (initializedControls) { controller.Disable(); }
     }
 
     #endregion
@@ -94,8 +105,6 @@ public class WateringMinigame : GenericMinigame {
 
         SpawnPlants();
         remainingPlants = plants.Length;
-
-        isRunning = true;
     }
 
 
@@ -140,10 +149,22 @@ public class WateringMinigame : GenericMinigame {
 
     public void FixedUpdate() {
 
-        if (!isRunning) { return; }
+        float position;
+
+        // Check if the mouse is currently used, otherwise use the normal controls
+        if (mouseInputHelper.IsMouseActive()) {
+            Vector2 mousePos = CameraController.Instance.GetMouseWorld();
+            mouseInputHelper.Update(mousePos);
+            
+            position = mousePos.x;
+            
+        } else {
+            position = wateringCan.transform.position.x + wateringCanMoveSpeed * controller.Move.ReadValue<Vector2>().x;
+        }
+
 
         Rect bounds = GetBounds();
-        wateringCan.transform.position = new Vector3(Mathf.Clamp(CameraController.Instance.GetMouseWorld().x, bounds.xMin, bounds.xMax), yPosition, wateringCan.transform.position.z);
+        wateringCan.transform.position = new Vector3(Mathf.Clamp(position, bounds.xMin, bounds.xMax), yPosition, wateringCan.transform.position.z);
 
 
         // isEmitting seems to be the best one - isStopped needs the current cycle to end before it updates
@@ -176,7 +197,7 @@ public class WateringMinigame : GenericMinigame {
         remainingPlants--;
 
         if (remainingPlants == 0) {
-            Close();
+            this.Invoke(nameof(Close), closeDelay);
         }
     }
 

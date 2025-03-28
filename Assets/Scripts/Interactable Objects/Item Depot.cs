@@ -8,6 +8,9 @@ public class ItemDepot : MonoBehaviour {
     [SerializeField]
     private GameObject childObject;
 
+    [SerializeField]
+    private Player.PlayerController.CarriableItemTypes type = PlayerController.CarriableItemTypes.invalid;
+
     private Carrieable childCarriableComponent;
 
     [SerializeField]
@@ -29,6 +32,8 @@ public class ItemDepot : MonoBehaviour {
 
 
     public bool HasPossessionOfChildObject() { return isInPossession; }
+
+    public PlayerController.CarriableItemTypes GetItemType() { return type; }
 
     /// <summary>
     /// Checks whether the given GameObject is assigned to this depot
@@ -55,6 +60,7 @@ public class ItemDepot : MonoBehaviour {
 
         childObject.transform.parent = this.transform;
         childObject.transform.position = new Vector3(this.transform.position.x + childObjectPosition.x, this.transform.position.y + childObjectPosition.y, childObject.transform.position.z);
+        childObject.transform.localScale = new Vector3(Mathf.Abs(childObject.transform.localScale.x), childObject.transform.localScale.y, childObject.transform.localScale.z);
     }
 
 }

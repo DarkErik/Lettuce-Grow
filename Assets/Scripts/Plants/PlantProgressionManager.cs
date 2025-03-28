@@ -6,27 +6,39 @@ using UnityEngine;
 [RequireComponent(typeof(FlowerpotBaseLogic))]
 public class PlantProgressionManager : MonoBehaviour
 {
-    [SerializeField] private GameObject minigame; //MinigameFrame
+    [SerializeField] private GameObject minigameGameObject; //MinigameFrame
     private MinigameFrame minigameFrame;
-    [SerializeField] private GameObject bubble; // PlantsNeedsBouble
-    private PlantsNeedsBouble bubbleGameObject;
+    [SerializeField] private GameObject bubbleGameObject; // PlantsNeedsBouble
+    private PlantsNeedsBouble bubble;
+    [SerializeField] private GameObject dustCloudPrefab;
+
+    [SerializeField] private ProgressBarUI progressBarUI;
 
     private FlowerpotBaseLogic flowerpotBaseLogic;
     private PlantSO plantData;
 
     private float currentGrothProgress;
     private bool isPlantPlanted;
+    public bool IsPlantReadyToHarvest { private set; get; }
 
-    private enum GrothPhase { NOCHANGE, PROGRESSING, REGRESSING }
+    public enum GrothPhase { NOCHANGE, PROGRESSING, REGRESSING }
     private GrothPhase currentGrothPhase;
 
     private Coroutine needTimer;
+
+    private bool isNeedCurrentlyActive = false;
+    private PlantNeed selectedNeed;
+
+    private bool minigameHasStarted;
+    private static bool globalMinigameHasStarted;
 
     private void Awake()
     {
         flowerpotBaseLogic = GetComponent<FlowerpotBaseLogic>();
         isPlantPlanted = false;
         currentGrothPhase = GrothPhase.NOCHANGE;
+
+        progressBarUI.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -44,6 +56,9 @@ public class PlantProgressionManager : MonoBehaviour
         isPlantPlanted = true;
         currentGrothPhase = GrothPhase.PROGRESSING;
         currentGrothProgress = 0;
+        minigameHasStarted = false;
+        IsPlantReadyToHarvest = false;
+        progressBarUI.gameObject.SetActive(true);
 
         Debug.Log("Plant Progression Started");
 
@@ -64,7 +79,6 @@ public class PlantProgressionManager : MonoBehaviour
             }
 
             float randomNeedPick = Random.Range(0f, 1f);
-            Debug.Log($"Random pick: {randomNeedPick}");
             foreach (PlantNeed plantNeed in System.Enum.GetValues(typeof(PlantNeed)))
             { 
                 float relativeNeedWeight = plantData.plantNeedMapping[plantNeed].pickChance / totalNeedWeight;
@@ -79,17 +93,31 @@ public class PlantProgressionManager : MonoBehaviour
                 }
             }
 
+            yield return new WaitUntil(() => minigameHasStarted);
             yield return new WaitUntil(() => minigameFrame.WasMinigameFinished);
             Destroy(minigameFrame.gameObject);
 
-            break;            
+            minigameHasStarted = false;
+            isNeedCurrentlyActive = false;
+            globalMinigameHasStarted = false;
+            currentGrothPhase = GrothPhase.PROGRESSING;
+
+            bubble.Close();
+            flowerpotBaseLogic.ChangePannicMode();
         }
     }
 
     private void StartNeed(PlantNeed plantNeed) {
+        selectedNeed = plantNeed;
+
         Vector3 bubblePositionShift = new Vector3(0.8f, 0.5f, 0f);
-        bubbleGameObject = Instantiate(bubble, this.gameObject.transform.position + bubblePositionShift, Quaternion.identity).GetComponent<PlantsNeedsBouble>();
-        bubbleGameObject.Init(plantNeed);
+        bubble = Instantiate(bubbleGameObject, this.gameObject.transform.position + bubblePositionShift, Quaternion.identity).GetComponent<PlantsNeedsBouble>();
+        bubble.Init(selectedNeed);
+
+        currentGrothPhase = GrothPhase.REGRESSING;
+        isNeedCurrentlyActive = true;
+
+        flowerpotBaseLogic.ChangePannicMode();
     }
 
 
@@ -100,8 +128,11 @@ public class PlantProgressionManager : MonoBehaviour
             currentGrothProgress += Time.deltaTime;
             if (currentGrothProgress > plantData.neededGrothTime)
             {
-                Debug.Log("Plant has finished growing");
+                Debug.Log("The Plant has finished growing.");
                 currentGrothPhase = GrothPhase.NOCHANGE;
+                StopCoroutine(needTimer);
+
+                IsPlantReadyToHarvest = true;
             }
         }
         else if (currentGrothPhase == GrothPhase.REGRESSING) 
@@ -111,7 +142,65 @@ public class PlantProgressionManager : MonoBehaviour
             {
                 Debug.Log("The Plant has died.");
                 currentGrothPhase = GrothPhase.NOCHANGE;
+                StopCoroutine(needTimer);
+               
+                isNeedCurrentlyActive = false;
+                bubble.Close();
+                progressBarUI.gameObject.SetActive(false);
+                
+                if (minigameHasStarted) {
+                    minigameHasStarted = false;
+                    globalMinigameHasStarted = false;
+
+                    //forceclose minigame if the minigame belongs to this plant
+                    minigameFrame.ForceClose();
+                }
+
+                StartCoroutine(DeathSequence());
             }
         }
+    }
+
+    private IEnumerator DeathSequence() {
+        GameObject dustCloud = Instantiate(dustCloudPrefab, gameObject.transform);
+        float clipLength = dustCloud.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        yield return new WaitForSeconds(clipLength);
+        isPlantPlanted = false;
+
+        flowerpotBaseLogic.DestroyPlant();
+        Destroy(dustCloud);
+    }
+
+    public bool GetIsNeedCurrentlyActive() { 
+        return isNeedCurrentlyActive;
+    }
+
+    public Player.PlayerController.CarriableItemTypes GetObjectForCurrentNeed() {
+        if (!isNeedCurrentlyActive) return Player.PlayerController.CarriableItemTypes.invalid;
+
+        return plantData.plantNeedMapping[selectedNeed].neededCarriableItem;
+    }
+
+    public void OnObjectForNeedProvided() {
+        if (globalMinigameHasStarted) return;
+
+        minigameFrame = Instantiate(minigameGameObject).GetComponent<MinigameFrame>();
+        minigameFrame.Init(selectedNeed);
+        minigameHasStarted = true;
+        globalMinigameHasStarted = true;
+    }
+
+    public void Harvest() {
+        IsPlantReadyToHarvest = false;
+        progressBarUI.gameObject.SetActive(false);
+    }
+
+    public float GetGrothProgressInPercent()
+    {
+        return currentGrothProgress / plantData.neededGrothTime;
+    }
+
+    public GrothPhase GetCurrentGrothPhase() { 
+        return currentGrothPhase;
     }
 }
