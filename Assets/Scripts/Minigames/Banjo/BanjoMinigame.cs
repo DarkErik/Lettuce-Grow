@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,13 @@ using UnityEngine;
 public class Banjo : GenericMinigame
 {
     private Rect boundaries;
+
+    // Input variables
+    private PlayerInputActions inputWrapper;
+    private PlayerInputActions.MinigameActions controller;
+    private bool initializedControls;
+
+
 
     [SerializeField] private GameObject banjo;
     [SerializeField] private int notenum;
@@ -29,18 +37,62 @@ public class Banjo : GenericMinigame
     private float[] keyPositions;
     private bool finito = false;
 
+
+    /// <summary>
+    /// Maps each directional vector to their specific key value
+    /// </summary>
+    private static (Vector2 vector, int key)[] inputAngleToKeyMap = new (Vector2, int) [] {
+        (new Vector2(-1, 0), 0),
+        (new Vector2(0, -1), 1),
+        (new Vector2(1, 0), 2),
+        (new Vector2(0, 1), 3)
+    };
+    /// <summary>
+    /// Set to true when no input occured in the last frame. Prevents holding down any of the buttons
+    /// </summary>
+    private bool hasInputReset = true;
+
+
+    #region Input setup logic
+    private void InitControls() {
+
+        inputWrapper = new PlayerInputActions();
+        controller = inputWrapper.Minigame;
+
+        initializedControls = true;
+        controller.Enable();
+    }
+
+
+    private void OnEnable() {
+        if (initializedControls) { controller.Enable(); }
+    }
+
+    private void OnDisable() {
+        if (initializedControls) { controller.Disable(); }
+    }
+
+    #endregion
+
+
     public override void StartUp()
     {
         SetBGColor(new Color(0.5f, 0.5f, 0.0f));
+
         boundaries = GetBounds();
         trigger_y = boundaries.yMin + offset;
         spawn_y = boundaries.yMax;
         lanes = new float[3];
         keyPositions = new float[3];
+
         SpawnTriggerFields();
+
         notes = new List<GameObject>();
         scoreField.transform.position = new Vector3(boundaries.xMin + 1.5f * offset, boundaries.yMax - offset);
+
+        InitControls();
     }
+
     private void SpawnTriggerFields()
     {
         for (int i = 0; i < 3; i++)
@@ -52,8 +104,12 @@ public class Banjo : GenericMinigame
     }
 
 
+
     private void ButtonPressed(int key)
     {
+        // Failsafe
+        if (key > keyPositions.Length) { return; }
+
         didYouHitANote = false;
         foreach (GameObject note in notes)
         {
@@ -83,8 +139,33 @@ public class Banjo : GenericMinigame
 
         scoreField.text = $"{completedNotes} / {numberNotes}";
     }
-    // Update is called once per frame
-    void Update()
+
+
+    /// <summary>
+    /// Returns the key of the closest matching vector according to the <see cref="Banjo.inputAngleToKeyMap"/> lookup table.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    private int ConvertInputvectorToKey(Vector2 input) {
+
+        float minDifference = float.MaxValue;
+        int minIndex = -1;
+
+        for (int i = 0; i < inputAngleToKeyMap.Length; i++) {
+
+            float angle = Vector2.Angle(input, inputAngleToKeyMap[i].vector);
+
+            if (angle < minDifference) {
+                minDifference = angle;
+                minIndex = i;
+            }
+        }
+
+        return inputAngleToKeyMap[minIndex].key;
+    }
+
+
+    void FixedUpdate()
     {
         if (finito)
         {
@@ -96,6 +177,8 @@ public class Banjo : GenericMinigame
             spawnNewNote = false;
             StartCoroutine(NoteInterval());
         }
+
+
         foreach (GameObject note in notes)
         {
             note.transform.localPosition = new Vector3(note.transform.localPosition.x, note.transform.localPosition.y - velocity * Time.deltaTime);
@@ -113,20 +196,19 @@ public class Banjo : GenericMinigame
             deathNote = null;
         }
 
-        if (Input.GetKeyDown("a"))
-        {
-            ButtonPressed(0);
+
+        Vector2 inputVector = controller.DirectionalButtons.ReadValue<Vector2>();
+        
+        if (hasInputReset && Mathf.Max(Mathf.Abs(inputVector.x), Mathf.Abs(inputVector.y)) > 0.8f) {
+            hasInputReset = false;
+            ButtonPressed(ConvertInputvectorToKey(inputVector));
+
+        } else if (Mathf.Max(Mathf.Abs(inputVector.x), Mathf.Abs(inputVector.y)) < 0.2f) {
+            hasInputReset = true;
         }
-        if (Input.GetKeyDown("s"))
-        {
-            ButtonPressed(1);
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            ButtonPressed(2);
-        }
-        if (completedNotes == numberNotes)
-        {
+
+
+        if (completedNotes == numberNotes) {
             finito = true;
             StartCoroutine(Finished());
         }

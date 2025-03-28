@@ -806,6 +806,15 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DirectionalButtons"",
+                    ""type"": ""Value"",
+                    ""id"": ""c61bcf16-078b-411f-9964-3f2ba8a1190e"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -940,6 +949,116 @@ namespace Player
                     ""action"": ""MouseMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""e391ef57-ad88-411a-90b7-c1288fe85234"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""961ddd9f-063a-419b-acdd-9a3890b3275f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""f0d1c78c-5dac-4ebf-a6c0-660d0efba01d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""943384c5-3ec5-413d-9829-db50c622825e"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""89f9219b-d3f5-4d55-bbef-699384ba1d81"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""0bfc93d7-5b3c-49ad-a306-e000e1c6dac1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e7f6f3c1-0656-4932-a18f-69669959ccfc"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""63d6391d-2c0d-4672-984c-0123af6b0526"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6b26d311-c397-4168-be80-ffaa3ddd57f5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a7e19f99-c49d-4b8d-8ea9-641b9e97df53"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1028,6 +1147,7 @@ namespace Player
             m_Minigame_Move = m_Minigame.FindAction("Move", throwIfNotFound: true);
             m_Minigame_PrimaryInteract = m_Minigame.FindAction("PrimaryInteract", throwIfNotFound: true);
             m_Minigame_MouseMovement = m_Minigame.FindAction("MouseMovement", throwIfNotFound: true);
+            m_Minigame_DirectionalButtons = m_Minigame.FindAction("DirectionalButtons", throwIfNotFound: true);
         }
 
         ~@PlayerInputActions()
@@ -1271,6 +1391,7 @@ namespace Player
         private readonly InputAction m_Minigame_Move;
         private readonly InputAction m_Minigame_PrimaryInteract;
         private readonly InputAction m_Minigame_MouseMovement;
+        private readonly InputAction m_Minigame_DirectionalButtons;
         public struct MinigameActions
         {
             private @PlayerInputActions m_Wrapper;
@@ -1278,6 +1399,7 @@ namespace Player
             public InputAction @Move => m_Wrapper.m_Minigame_Move;
             public InputAction @PrimaryInteract => m_Wrapper.m_Minigame_PrimaryInteract;
             public InputAction @MouseMovement => m_Wrapper.m_Minigame_MouseMovement;
+            public InputAction @DirectionalButtons => m_Wrapper.m_Minigame_DirectionalButtons;
             public InputActionMap Get() { return m_Wrapper.m_Minigame; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1296,6 +1418,9 @@ namespace Player
                 @MouseMovement.started += instance.OnMouseMovement;
                 @MouseMovement.performed += instance.OnMouseMovement;
                 @MouseMovement.canceled += instance.OnMouseMovement;
+                @DirectionalButtons.started += instance.OnDirectionalButtons;
+                @DirectionalButtons.performed += instance.OnDirectionalButtons;
+                @DirectionalButtons.canceled += instance.OnDirectionalButtons;
             }
 
             private void UnregisterCallbacks(IMinigameActions instance)
@@ -1309,6 +1434,9 @@ namespace Player
                 @MouseMovement.started -= instance.OnMouseMovement;
                 @MouseMovement.performed -= instance.OnMouseMovement;
                 @MouseMovement.canceled -= instance.OnMouseMovement;
+                @DirectionalButtons.started -= instance.OnDirectionalButtons;
+                @DirectionalButtons.performed -= instance.OnDirectionalButtons;
+                @DirectionalButtons.canceled -= instance.OnDirectionalButtons;
             }
 
             public void RemoveCallbacks(IMinigameActions instance)
@@ -1394,6 +1522,7 @@ namespace Player
             void OnMove(InputAction.CallbackContext context);
             void OnPrimaryInteract(InputAction.CallbackContext context);
             void OnMouseMovement(InputAction.CallbackContext context);
+            void OnDirectionalButtons(InputAction.CallbackContext context);
         }
     }
 }
