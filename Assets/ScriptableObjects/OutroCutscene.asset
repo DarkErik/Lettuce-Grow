@@ -71,6 +71,6 @@ MonoBehaviour:
     exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
     exchangeSpriteRight: {fileID: 0}
   - text: Hmph. Now get outta here before I change my mind.
-    leftSideTalking: 1
+    leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
     exchangeSpriteRight: {fileID: 0}
