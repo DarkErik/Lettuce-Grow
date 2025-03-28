@@ -768,7 +768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Controlls
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
   m_sharedMaterial: {fileID: -6435251239669720936, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
@@ -1199,24 +1199,26 @@ MonoBehaviour:
   m_text: '<size=150%>Controls</size>
 
 
-    W,A,S,D to move
+    W,A,S,D/Joystick to move
 
-    Space to interact
+    Space/Leftclick/South
+    controller button to interact
 
-    Mouse
-    in Minigames
+    Mouse movement/Joystick/WASD in Minigames
 
 
-    Grab seeds out of the seed boxes.
+    <size=80%>Grab
+    seeds out of the seed boxes.
 
-    Plant them, and fulfill
-    their needs, with the watering can, the banjo and the fly swatter.
+    Plant them, and fulfill their needs, with the
+    watering can, the banjo and the fly swatter.
 
-    When
-    fully grown. Transport the vegtables into the sell box.
+    When fully grown. Transport
+    the vegtables into the sell box.
 
-    Fullfil the daily
-    demands to progress.'
+    Fullfil the daily demands to progress.
+
+    </size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
   m_sharedMaterial: {fileID: -6435251239669720936, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
