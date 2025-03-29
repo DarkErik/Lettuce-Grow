@@ -73,7 +73,7 @@ public class Cutscenes : MonoBehaviour {
                 yield break;
             }
         }
-        ScreenTransition.Instance.LoadScene("Day_" + GameManager.currentLevel);
+        ScreenTransition.Instance.LoadScene("Day_" + (GameManager.currentLevel + 1));
 
     }
 }

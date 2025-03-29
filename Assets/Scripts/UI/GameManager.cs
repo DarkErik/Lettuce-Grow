@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
         saladProgress.text = saladAmount + "/" + levels[currentLevel].targetSalad;
         if (saladAmount >= levels[currentLevel].targetSalad)
             saladProgress.color = Color.green;
+
+        CheckDemands();
     }
 
     public void AddCarrot() {
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
         carrotProgress.text = carrotAmount + "/" + levels[currentLevel].targetCarrot;
         if (carrotAmount >= levels[currentLevel].targetCarrot)
             carrotProgress.color = Color.green;
+
+        CheckDemands();
     }
 
     public void AddPumpkin() {
@@ -72,6 +76,8 @@ public class GameManager : MonoBehaviour
         pumpkinProgress.text = pumpkinAmount + "/" + levels[currentLevel].targetPumpkin;
         if (pumpkinAmount >= levels[currentLevel].targetPumpkin)
             pumpkinProgress.color = Color.green;
+
+        CheckDemands();
     }
 
     public void CheckDemands() {

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f71f3de65b81d54c83b3fa2a5f985af, type: 3}
   m_Name: IntroCutscene
   m_EditorClassIdentifier: 
-  transitionToScene: Erik's Test
   dialog:
   - text: "Uh\u2026 Hi! I saw the sign outside about the internship, and I\u2014well,
       I\u2019d really like to apply. "
@@ -24,8 +23,8 @@ MonoBehaviour:
     leftSideTalking: 1
     exchangeSpriteLeft: {fileID: 0}
     exchangeSpriteRight: {fileID: 0}
-  - text: "(grunt) <wobbly>Love plants?</wobbly> Hah! Let\u2019s see if plants love
-      you! This ain\u2019t some fairy-tale garden, kid."
+  - text: "(grunt) Love plants? Hah! Let\u2019s see if plants love you! This ain\u2019t
+      some fairy-tale garden, kid."
     leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
     exchangeSpriteRight: {fileID: 0}
@@ -46,12 +45,12 @@ MonoBehaviour:
     leftSideTalking: 1
     exchangeSpriteLeft: {fileID: 0}
     exchangeSpriteRight: {fileID: 0}
-  - text: 'Enough to keep <wobbly>customers happy and my business running!</wobbly>
-      And if you mess up, we lose money. '
+  - text: 'Enough to keep customers happy and my business running! And if you mess
+      up, we lose money. '
     leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 0}
     exchangeSpriteRight: {fileID: 0}
-  - text: "And if we lose money\u2026 <scarry>I get angry.</scarry>"
+  - text: "And if we lose money\u2026 sI get angry."
     leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 0}
     exchangeSpriteRight: {fileID: 0}

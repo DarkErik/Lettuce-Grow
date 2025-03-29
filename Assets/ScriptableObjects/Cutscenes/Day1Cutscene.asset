@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f71f3de65b81d54c83b3fa2a5f985af, type: 3}
   m_Name: Day1Cutscene
   m_EditorClassIdentifier: 
-  transitionToScene: 
   dialog:
   - text: "Hmph. You didn\u2019t pass out. That\u2019s already better than most."
     leftSideTalking: 0
@@ -57,7 +56,7 @@ MonoBehaviour:
     exchangeSpriteLeft: {fileID: 0}
     exchangeSpriteRight: {fileID: 0}
   - text: "Good. \u2018Cause you\u2019re stuck here now. Be here at sunrise."
-    leftSideTalking: 1
+    leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 0}
     exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
   - text: Aye, aye, Captain.
@@ -65,6 +64,6 @@ MonoBehaviour:
     exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
     exchangeSpriteRight: {fileID: 0}
   - text: "And get some rest. You\u2019ll need it."
-    leftSideTalking: 1
+    leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
     exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
