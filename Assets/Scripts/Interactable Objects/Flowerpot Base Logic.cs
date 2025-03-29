@@ -37,6 +37,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     public void Plant(GameObject plant) {
 
         AddPlantToPot(plant);
+        SoundManager.Instance.PlayPlantPlantedSound(this.transform.position);
         isPlanted = true;
 
         OnPlanted?.Invoke(this, new OnPlantedEventArgs { plantData = plant.GetComponent<PlantDataWrapper>().PlantData});
@@ -52,6 +53,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     public GameObject Harvest() {
         if (!CanBeHarvested()) { throw new Exception("Plant " + plant + " can not be harvested"); }
         progressionManager.Harvest();
+        SoundManager.Instance.PlayHarvestSound(this.transform.position);
         isPlanted = false;
 
         return plant;

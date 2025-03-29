@@ -19,9 +19,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1ba52a834602ee8429ac46e0c2fc7d4c, type: 3}
   itemGrabbed: []
   itemPlaced: []
-  plantPlanted: []
-  plantFinishedGrowing: []
-  plantDeath: []
+  plantPlanted:
+  - {fileID: 8300000, guid: 8bc281862b327614fa2baa2c1fa4d3d6, type: 3}
+  harvest:
+  - {fileID: 8300000, guid: c8f22ba810a76ac47bc8db02070c67e5, type: 3}
+  plantFinishedGrowing:
+  - {fileID: 8300000, guid: 1c8f6375398ca774eb84175fcaada33c, type: 3}
+  plantDeath:
+  - {fileID: 8300000, guid: 1c8f6375398ca774eb84175fcaada33c, type: 3}
   plantSold:
   - {fileID: 8300000, guid: 027a8191bbea99145aa031ed509f8dee, type: 3}
   - {fileID: 8300000, guid: 7bbe68ef7d9926843a8add9fa1699f4c, type: 3}
@@ -29,6 +34,10 @@ MonoBehaviour:
   plantNeedArises:
   - {fileID: 8300000, guid: 92b1029638cd9864bbbbb6a32a2200f9, type: 3}
   platsch:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a608215d4f45e0b48b049eb93bda39a3, type: 3}
   klatsch:
   - {fileID: 8300000, guid: 3053ad543154d5a47a3965f54ad0a385, type: 3}
+  banjoHit:
+  - {fileID: 8300000, guid: b61510e9c2193ae4f83e25027aff1d5d, type: 3}
+  banjoMissed:
+  - {fileID: 8300000, guid: 92b1029638cd9864bbbbb6a32a2200f9, type: 3}

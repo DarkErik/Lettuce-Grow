@@ -22,6 +22,7 @@ public class InsectMinigame : GenericMinigame
     [SerializeField] private GameObject fly;
     [SerializeField] private GameObject flutsch;
     [SerializeField] private Animator klatschenanim;
+    [SerializeField] private SpriteRenderer bgImage;
 
 
     public float offset = 0f;
@@ -64,8 +65,11 @@ public class InsectMinigame : GenericMinigame
 
     public override void StartUp()
     {
+        boundaries = GetBounds();
         InitControls();
-
+        //bgImage = new Vector2(1/boundaries.width, 1/boundaries.height);
+        //SetBGImage(bgImage.sprite);
+        //SetBGColor(new Color(1f, 1f, 1f));
         SetBGColor(new Color(0.2f, 0.6f, 0.2f));
         SpawnFlies();
     }
@@ -99,7 +103,6 @@ public class InsectMinigame : GenericMinigame
 
     private void SpawnFlies()
     {
-        boundaries = GetBounds();
         num_flies = Random.Range(fliegenanzahl - 1, fliegenanzahl + 2);
         flies = new GameObject[num_flies];
         flies_direction = new Vector3[num_flies];

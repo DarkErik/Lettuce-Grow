@@ -104,8 +104,6 @@ public class Banjo : GenericMinigame
         }
     }
 
-
-
     private void ButtonPressed(int key)
     {
         // Failsafe
@@ -138,9 +136,13 @@ public class Banjo : GenericMinigame
         }
         if (!didYouHitANote)
         {
+            SoundManager.Instance.PlayBanjoMissedSound(this.transform.position);
             completedNotes = 0;
         }
-
+        else
+        {
+            SoundManager.Instance.PlayBanjoHitSound(this.transform.position);
+        }
         scoreField.text = $"{completedNotes} / {numberNotes}";
     }
 

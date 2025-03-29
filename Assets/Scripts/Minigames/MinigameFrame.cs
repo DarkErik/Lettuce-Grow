@@ -13,6 +13,7 @@ public class MinigameFrame : MonoBehaviour
     [SerializeField] private SpriteRenderer bgImage;
     [SerializeField] private Animator anim;
 
+
     private float closeAnimTime = -1;
     private void Awake() {
         closeAnimTime = Util.GetAnimationClipLength(anim, "Close");
@@ -54,7 +55,10 @@ public class MinigameFrame : MonoBehaviour
         return new Rect(center, size);
     }
 
-
+    public void SetBGImage(Sprite backgroundImage)
+    {
+        bgImage.sprite = backgroundImage;
+    }
 
     public void SetBGColor(Color c) {
         bgImage.color = c;

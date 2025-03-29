@@ -42,6 +42,7 @@ public class WaterdropsParticleHandler : MonoBehaviour {
                 if (collisionData.GetCollider(i, 0) == plant) {
                     
                     plant.GetComponent<GrowingPlant>().AddWater();
+                    SoundManager.Instance.PlayWaterHitPlantSound(this.transform.position);
                     break;
                 }
             }

@@ -166,6 +166,9 @@ public class PlantProgressionManager : MonoBehaviour
     private IEnumerator DeathSequence() {
         GameObject dustCloud = Instantiate(dustCloudPrefab, gameObject.transform);
         float clipLength = dustCloud.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length;
+
+        SoundManager.Instance.PlayPlantDeathSound(this.transform.position);
+
         yield return new WaitForSeconds(clipLength);
         isPlantPlanted = false;
 

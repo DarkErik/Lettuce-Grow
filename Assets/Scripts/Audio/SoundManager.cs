@@ -26,10 +26,48 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClipRefsSO.plantSold, position, volume);
     }
 
+    public void PlayWaterHitPlantSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.platsch, position, volume);
+    }
+
+    public void PlayBanjoHitSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.banjoHit, position, volume);
+    }
+
+    public void PlayBanjoMissedSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.banjoMissed, position, volume);
+    }
+
     public void PlayPlantPlantedSound(Vector3 position, float volume = 1f) {
         PlaySound(audioClipRefsSO.plantPlanted, position, volume);
     }
+    public void PlayHarvestSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.harvest, position, volume);
+    }
+    
+    public void PlayPlantDeathSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.plantDeath, position, volume);
+    }
+    
 
+    public void PlayPlantFinishedGrowingSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.plantFinishedGrowing, position, volume);
+    }
+
+    public void PlayItemGrabbedSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.itemGrabbed, position, volume);
+    }
+    public void PlayItemPlacedSound(Vector3 position, float volume = 1f)
+    {
+        PlaySound(audioClipRefsSO.itemPlaced, position, volume);
+    }
     public void PlayFootstepSound(Vector3 position, float volume = 1f)
     {
         PlaySound(audioClipRefsSO.footstep, position, volume);

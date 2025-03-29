@@ -20,6 +20,11 @@ public abstract class GenericMinigame : MonoBehaviour
         return bounds;
     }
 
+    public void SetBGImage(Sprite backgroundImage)
+    {
+        outerFrame.SetBGImage(backgroundImage);
+    }
+
     public void SetBGColor(Color c) {
         outerFrame.SetBGColor(c);
     }

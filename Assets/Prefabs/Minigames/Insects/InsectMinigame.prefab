@@ -136,6 +136,7 @@ MonoBehaviour:
   fly: {fileID: 183624940647246666, guid: 17f2fa9af1a2fdb4692ca4516d165afa, type: 3}
   flutsch: {fileID: 6721224100650341447, guid: 6dcf180d2fce915459c7cef582b7fbe4, type: 3}
   klatschenanim: {fileID: 1316304889280515969}
+  bgImage: {fileID: 8162214590498502176, guid: a250f8cdbded27a4cac3a99dedb496bf, type: 3}
   offset: 0.2
   fly_velocity: 1
   klatschenradius: 0.6

@@ -14,6 +14,7 @@ public class AudioClipRefsSO : ScriptableObject
 
     [Header("Plant Sounds")]
     public AudioClip[] plantPlanted;
+    public AudioClip[] harvest;
     public AudioClip[] plantFinishedGrowing;
     public AudioClip[] plantDeath;
     public AudioClip[] plantSold;
@@ -21,6 +22,8 @@ public class AudioClipRefsSO : ScriptableObject
 
 
     [Header("Minigame Sounds")]
-    public AudioClip[] platsch;
-    public AudioClip[] klatsch;
+    public AudioClip[] platsch; //water game
+    public AudioClip[] klatsch; //fly game
+    public AudioClip[] banjoHit;
+    public AudioClip[] banjoMissed;
 }
