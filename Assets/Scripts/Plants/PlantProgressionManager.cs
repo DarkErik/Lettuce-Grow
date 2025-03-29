@@ -137,7 +137,10 @@ public class PlantProgressionManager : MonoBehaviour
                 currentGrothPhase = GrothPhase.NOCHANGE;
                 StopCoroutine(needTimer);
 
+                progressBarUI.gameObject.SetActive(false);
+
                 IsPlantReadyToHarvest = true;
+                flowerpotBaseLogic.OnFullyGrown();
             }
         }
         else if (currentGrothPhase == GrothPhase.REGRESSING) 
