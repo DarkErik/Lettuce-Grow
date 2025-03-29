@@ -17,8 +17,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b6b40c33174b12e44ae33f454d60fed9, type: 3}
   - {fileID: 8300000, guid: 536e957f54567e046bf7adea6a9319be, type: 3}
   - {fileID: 8300000, guid: 1ba52a834602ee8429ac46e0c2fc7d4c, type: 3}
-  itemGrabbed: []
-  itemPlaced: []
+  itemGrabbed:
+  - {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
+  itemPlaced:
+  - {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
   plantPlanted:
   - {fileID: 8300000, guid: 8bc281862b327614fa2baa2c1fa4d3d6, type: 3}
   harvest:

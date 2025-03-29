@@ -1,6 +1,7 @@
-    using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -62,6 +63,12 @@ namespace Player {
         /// </summary>
         private GameObject pickupSource;
 
+        /// <summary>
+        /// Stores all colliders that entered the trigger since the last FixedUpdate. Allows choosing the interaction based on e.g. distance.
+        /// </summary>
+        private HashSet<Collider2D> possibleInteractions = new HashSet<Collider2D>();
+
+
 
         [SerializeField]
         private PlayerAnimation playerAnimation;
@@ -90,10 +97,15 @@ namespace Player {
 
         private void OnInteractPerformed(InputAction.CallbackContext ctx) {
 
+            possibleInteractions.Clear();           // Just to be safe...
             interactionHitbox.enabled = true;
             interactionTimer = interactionTimeWindow;
         }
 
+
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (!possibleInteractions.Contains(other)) { possibleInteractions.Add(other); }
+        }
 
 
 
@@ -101,8 +113,24 @@ namespace Player {
         {
 
             // Movement
-            if (canMove)
-            {
+            if (canMove) {
+
+                // Process all interactions that occured since the last frame
+                if (possibleInteractions.Count > 0 && interactionHitbox.enabled) {
+
+                    // Sort by absolute distance to player
+                    foreach (Collider2D i in possibleInteractions.OrderBy(x => Mathf.Abs(Vector3.Distance(transform.position, x.transform.position)))) {
+                        ProcessTriggerEnter2D(i);
+
+                        if (!interactionHitbox.enabled) { break; }
+                    }
+
+                    possibleInteractions.Clear();
+                }
+
+
+
+                // Update direction and apply movement
                 if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
                 directionVector = controller.Move.ReadValue<Vector2>().normalized;
 
@@ -115,8 +143,7 @@ namespace Player {
                 }
                 
 
-                if (interactionTimer > 0)
-                {
+                if (interactionTimer > 0) {
                     interactionTimer--;
 
                     // Adjust the position of the interaction hitbox according to the direction
@@ -125,6 +152,7 @@ namespace Player {
 
                     if (interactionTimer == 0) { interactionHitbox.enabled = false; }
                 }
+
             }
             else
             {
@@ -133,7 +161,8 @@ namespace Player {
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D other) {
+
+        private void ProcessTriggerEnter2D(Collider2D other) {
 
 
             if (interactionHitbox.enabled) {
@@ -306,6 +335,8 @@ namespace Player {
 
 
         }
+
+
 
 
         private void ResetInteraction() {

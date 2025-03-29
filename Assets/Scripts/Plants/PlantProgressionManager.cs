@@ -103,7 +103,7 @@ public class PlantProgressionManager : MonoBehaviour
             currentGrothPhase = GrothPhase.PROGRESSING;
 
             bubble.Close();
-            flowerpotBaseLogic.ChangePannicMode();
+            flowerpotBaseLogic.ChangePanicMode();
         }
     }
 
@@ -117,7 +117,7 @@ public class PlantProgressionManager : MonoBehaviour
         currentGrothPhase = GrothPhase.REGRESSING;
         isNeedCurrentlyActive = true;
 
-        flowerpotBaseLogic.ChangePannicMode();
+        flowerpotBaseLogic.ChangePanicMode();
 
         SoundManager.Instance.PlayPlantNeedArisesSound(this.transform.position);
     }
@@ -131,6 +131,9 @@ public class PlantProgressionManager : MonoBehaviour
             if (currentGrothProgress > plantData.neededGrothTime)
             {
                 Debug.Log("The Plant has finished growing.");
+
+                SoundManager.Instance.PlayPlantFinishedGrowingSound(this.transform.position);
+
                 currentGrothPhase = GrothPhase.NOCHANGE;
                 StopCoroutine(needTimer);
 

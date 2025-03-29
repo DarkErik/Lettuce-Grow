@@ -22,6 +22,9 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         public PlantSO plantData;
     }
     public event EventHandler<OnPlantedEventArgs> OnPlanted;
+    
+    // Called by PlantProgressionManager as soon as the plant is fully matured.
+    public Action OnFullyGrown;
 
     
     /// <summary>
@@ -39,6 +42,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         AddPlantToPot(plant);
         SoundManager.Instance.PlayPlantPlantedSound(this.transform.position);
         isPlanted = true;
+        if (OnFullyGrown == null) { OnFullyGrown = () => { plantLogic.SetHiglight(true); }; }
 
         OnPlanted?.Invoke(this, new OnPlantedEventArgs { plantData = plant.GetComponent<PlantDataWrapper>().PlantData});
 
@@ -53,6 +57,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     public GameObject Harvest() {
         if (!CanBeHarvested()) { throw new Exception("Plant " + plant + " can not be harvested"); }
         progressionManager.Harvest();
+        plantLogic.SetHiglight(false);
         SoundManager.Instance.PlayHarvestSound(this.transform.position);
         isPlanted = false;
 
@@ -90,6 +95,8 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     public void Deposit(GameObject plant) {
 
         AddPlantToPot(plant);
+        plantLogic.SetHiglight(true);
+
         isDeposited = true;
     }
 
@@ -103,6 +110,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
 
         if (!isDeposited) { throw new Exception("There is no plant to pick up"); }
         isDeposited = false;
+        plantLogic.SetHiglight(false);
 
         return plant;
     }
@@ -116,7 +124,10 @@ public class FlowerpotBaseLogic : MonoBehaviour {
     public GameObject Swap(GameObject plant) {
 
         GameObject old = CanBeHarvested() ? Harvest() : PickUp();
+        plantLogic.SetHiglight(false);
+        
         Deposit(plant);
+        plantLogic.SetHiglight(true);
 
         return old;
     }
@@ -152,12 +163,13 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         plant = null;
         plantLogic = null;
         isPlanted = false;
+        isDeposited = false;
     }
 
     /// <summary>
     /// Changes the Mode of the Animator of the plant
     /// </summary>
-    public void ChangePannicMode() {
+    public void ChangePanicMode() {
         PlantAnimation plantAnimation = plant.GetComponent<PlantAnimation>();
         plantAnimation.ChangePanic();
     }
