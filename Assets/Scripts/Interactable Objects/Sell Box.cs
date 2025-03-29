@@ -32,6 +32,8 @@ public class SellBox : MonoBehaviour {
         PlantLogic pl = gameObject.GetComponent<PlantLogic>();
         if (pl == null) { throw new System.Exception("Object " + gameObject + " can not be sold"); }
 
+        SoundManager.Instance.PlayPlantSellSound(this.transform.position);
+
         plantLookupTable[pl.GetPlantType()]();
         GameObject.Destroy(gameObject);
     }

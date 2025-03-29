@@ -22,4 +22,5 @@ public class AudioClipRefsSO : ScriptableObject
 
     [Header("Minigame Sounds")]
     public AudioClip[] platsch;
+    public AudioClip[] klatsch;
 }

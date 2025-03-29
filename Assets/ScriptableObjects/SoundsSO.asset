@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1b65f09e53002c47af74ffad114aea5, type: 3}
-  m_Name: Sounds
+  m_Name: SoundsSO
   m_EditorClassIdentifier: 
   footstep:
   - {fileID: 8300000, guid: 18f279920f4c9ed46b3f24482d9f728c, type: 3}
@@ -29,4 +29,6 @@ MonoBehaviour:
   plantNeedArises:
   - {fileID: 8300000, guid: 92b1029638cd9864bbbbb6a32a2200f9, type: 3}
   platsch:
+  - {fileID: 0}
+  klatsch:
   - {fileID: 8300000, guid: 3053ad543154d5a47a3965f54ad0a385, type: 3}
