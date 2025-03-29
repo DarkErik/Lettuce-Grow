@@ -109,25 +109,26 @@ namespace Player {
 
 
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() {
+
+            // Process all interactions that occured since the last frame
+            // Has to be processed before anything else since it can affect canMove
+            if (possibleInteractions.Count > 0 && interactionHitbox.enabled) {
+
+                // Sort by absolute distance to player
+                foreach (Collider2D i in possibleInteractions.OrderBy(x => Mathf.Abs(Vector3.Distance(transform.position, x.transform.position)))) {
+                    ProcessTriggerEnter2D(i);
+
+                    if (!interactionHitbox.enabled) { break; }
+                }
+
+                possibleInteractions.Clear();
+            }
+
+
 
             // Movement
             if (canMove) {
-
-                // Process all interactions that occured since the last frame
-                if (possibleInteractions.Count > 0 && interactionHitbox.enabled) {
-
-                    // Sort by absolute distance to player
-                    foreach (Collider2D i in possibleInteractions.OrderBy(x => Mathf.Abs(Vector3.Distance(transform.position, x.transform.position)))) {
-                        ProcessTriggerEnter2D(i);
-
-                        if (!interactionHitbox.enabled) { break; }
-                    }
-
-                    possibleInteractions.Clear();
-                }
-
 
 
                 // Update direction and apply movement
@@ -135,7 +136,6 @@ namespace Player {
                 directionVector = controller.Move.ReadValue<Vector2>().normalized;
 
                 rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
-
 
                 // Animation stuff
                 if (playerAnimation != null) {
@@ -153,11 +153,9 @@ namespace Player {
                     if (interactionTimer == 0) { interactionHitbox.enabled = false; }
                 }
 
-            }
-            else
-            {
-                if (playerAnimation != null)
-                    playerAnimation.ChangeRunning(false);
+            } else {
+
+                if (playerAnimation != null) { playerAnimation.ChangeRunning(false); }
             }
         }
 
@@ -240,6 +238,10 @@ namespace Player {
                                 PlantProgressionManager plantProgressionManager = other.gameObject.GetComponent<PlantProgressionManager>();
 
                                 if (plantProgressionManager != null && plantProgressionManager.GetIsNeedCurrentlyActive() && canMove) {
+
+                                    // Reset the interaction trigger first, just to be safe...
+                                    ResetInteraction();
+
                                     // TODO: use plantProgressionManager.GetObjectForCurrentNeed to check for the right object if more objects are available
                                     plantProgressionManager.OnObjectForNeedProvided();
                                 }
@@ -371,10 +373,13 @@ namespace Player {
         /// <param name="flag">new State</param>
         public void SetCanMove(bool flag) {
             canMove = flag;
+
+            // Cancel all remaining momentum
+            if (!canMove) { rigidbody.velocity = Vector2.zero; }
         }
 
         public bool IsPlayerIsCurrentlyMoving() { 
-            return directionVector != Vector2.zero;
+            return canMove && directionVector != Vector2.zero;
         }
     }
 
