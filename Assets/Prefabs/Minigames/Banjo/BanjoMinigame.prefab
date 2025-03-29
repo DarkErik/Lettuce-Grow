@@ -56,12 +56,13 @@ MonoBehaviour:
   - {fileID: 4185337580378846276}
   - {fileID: 3204088854602547153}
   scoreField: {fileID: 2655453747954941431}
+  noteExposion: {fileID: 6196554181860965610, guid: 636ab28eeb5911641b6dcd4eb70e36ea, type: 3}
   offset: 0.2
   trigger_y: 0
   spawn_y: 0
-  velocity: 1
+  velocity: 2.5
   toleranceRate: 0.3
-  numberNotes: 3
+  numberNotes: 4
 --- !u!1 &1735231541864536618
 GameObject:
   m_ObjectHideFlags: 0

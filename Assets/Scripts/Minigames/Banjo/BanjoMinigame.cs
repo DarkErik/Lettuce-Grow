@@ -20,13 +20,14 @@ public class Banjo : GenericMinigame
     [SerializeField] private GameObject[] trigger = new GameObject[3];
     //[SerializeField] private Canvas score;
     [SerializeField] private TMPro.TextMeshProUGUI scoreField;
+    [SerializeField] private ParticleSystem noteExposion;
 
     public float offset = 0.3f;
     public float trigger_y = 0f;
     public float spawn_y = 0f;
-    public float velocity = 1f;
+    public float velocity = 2.0f;
     public float toleranceRate = 0.3f;  // how close the note has to be to the trigger field
-    public int numberNotes = 3;
+    public int numberNotes = 4;
 
     private float[] lanes;
     private List<GameObject> notes;
@@ -88,7 +89,7 @@ public class Banjo : GenericMinigame
         SpawnTriggerFields();
 
         notes = new List<GameObject>();
-        scoreField.transform.position = new Vector3(boundaries.xMin + 1.5f * offset, boundaries.yMax - offset);
+        scoreField.transform.position = new Vector3(boundaries.xMin + 1.8f * offset, boundaries.yMax - offset);
 
         InitControls();
     }
@@ -129,6 +130,9 @@ public class Banjo : GenericMinigame
         if (deathNote != null)
         {
             notes.Remove(deathNote);
+            ParticleSystem explosion = Instantiate(noteExposion);
+            explosion.transform.localPosition = deathNote.transform.localPosition;
+            explosion.Play();
             Destroy(deathNote);
             deathNote = null;
         }
