@@ -32,6 +32,8 @@ public class PlantProgressionManager : MonoBehaviour
     private bool minigameHasStarted;
     private static bool globalMinigameHasStarted;
 
+
+
     private void Awake()
     {
         flowerpotBaseLogic = GetComponent<FlowerpotBaseLogic>();
@@ -103,7 +105,7 @@ public class PlantProgressionManager : MonoBehaviour
             currentGrothPhase = GrothPhase.PROGRESSING;
 
             bubble.Close();
-            flowerpotBaseLogic.ChangePannicMode();
+            flowerpotBaseLogic.ChangePanicMode();
         }
     }
 
@@ -117,7 +119,7 @@ public class PlantProgressionManager : MonoBehaviour
         currentGrothPhase = GrothPhase.REGRESSING;
         isNeedCurrentlyActive = true;
 
-        flowerpotBaseLogic.ChangePannicMode();
+        flowerpotBaseLogic.ChangePanicMode();
 
         SoundManager.Instance.PlayPlantNeedArisesSound(this.transform.position);
     }
@@ -134,7 +136,10 @@ public class PlantProgressionManager : MonoBehaviour
                 currentGrothPhase = GrothPhase.NOCHANGE;
                 StopCoroutine(needTimer);
 
+                progressBarUI.gameObject.SetActive(false);
+
                 IsPlantReadyToHarvest = true;
+                flowerpotBaseLogic.OnFullyGrown();
             }
         }
         else if (currentGrothPhase == GrothPhase.REGRESSING) 
