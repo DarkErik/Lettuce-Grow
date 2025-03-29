@@ -21,5 +21,12 @@ MonoBehaviour:
   itemPlaced: []
   plantPlanted: []
   plantFinishedGrowing: []
-  plantSold: []
-  platsch: []
+  plantDeath: []
+  plantSold:
+  - {fileID: 8300000, guid: 027a8191bbea99145aa031ed509f8dee, type: 3}
+  - {fileID: 8300000, guid: 7bbe68ef7d9926843a8add9fa1699f4c, type: 3}
+  - {fileID: 8300000, guid: 72adbf7099788c64ea1478ceab906398, type: 3}
+  plantNeedArises:
+  - {fileID: 8300000, guid: 92b1029638cd9864bbbbb6a32a2200f9, type: 3}
+  platsch:
+  - {fileID: 8300000, guid: 3053ad543154d5a47a3965f54ad0a385, type: 3}

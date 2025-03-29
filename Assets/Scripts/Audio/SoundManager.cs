@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
         Instance = this;
     }
 
+
     public void PlayPlantPlantedSound(Vector3 position, float volume = 1f) {
         PlaySound(audioClipRefsSO.plantPlanted, position, volume);
     }
