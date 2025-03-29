@@ -73,6 +73,8 @@ public class InsectMinigame : GenericMinigame
 
     public void Klatsch()
     {
+        SoundManager.Instance.PlayFliegenklatscheSound(this.transform.position);
+
         for (int i = 0; i < num_flies; i++)
         {
             if (flies[i] == null)

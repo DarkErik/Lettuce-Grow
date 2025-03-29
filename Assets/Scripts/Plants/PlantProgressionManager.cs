@@ -118,6 +118,8 @@ public class PlantProgressionManager : MonoBehaviour
         isNeedCurrentlyActive = true;
 
         flowerpotBaseLogic.ChangePannicMode();
+
+        SoundManager.Instance.PlayPlantNeedArisesSound(this.transform.position);
     }
 
 
