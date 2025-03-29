@@ -58,6 +58,7 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         if (!CanBeHarvested()) { throw new Exception("Plant " + plant + " can not be harvested"); }
         progressionManager.Harvest();
         plantLogic.SetHiglight(false);
+
         SoundManager.Instance.PlayHarvestSound(this.transform.position);
         isPlanted = false;
 
@@ -112,6 +113,8 @@ public class FlowerpotBaseLogic : MonoBehaviour {
         isDeposited = false;
         plantLogic.SetHiglight(false);
 
+        SoundManager.Instance.PlayHarvestSound(this.transform.position);
+
         return plant;
     }
 
@@ -152,6 +155,8 @@ public class FlowerpotBaseLogic : MonoBehaviour {
 
         plant.transform.parent = this.transform;
         plant.transform.position = new Vector3(this.transform.position.x + relativePosition.x, this.transform.position.y + relativePosition.y, plant.transform.position.z);
+
+        SoundManager.Instance.PlayPlantPlantedSound(transform.position);
     }
 
 
