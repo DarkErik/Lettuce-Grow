@@ -9,7 +9,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    private static int currentLevel = 0;
+    public static int currentLevel = 0;
 
     [SerializeField] private Level[] levels;
     
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private int pumpkinAmount = -1;
 
     private float levelStartedTime;
+    private bool dayFinishedSucessfully = false;
 
     private void Awake() {
         Instance = this;
@@ -42,8 +43,10 @@ public class GameManager : MonoBehaviour
         float progress = (Time.time - levelStartedTime) / levels[currentLevel].dayTimeSeconds;
         timePassedProgressBar.fillAmount = progress;
         
-        if (progress >= 1f) {
+        if (progress >= 1f && !dayFinishedSucessfully) {
             Debug.Log("Time up!");
+            Cutscenes.playFailureCutscene = true;
+            ScreenTransition.Instance.LoadScene("Cutscene");
         }
     }
 
@@ -53,6 +56,8 @@ public class GameManager : MonoBehaviour
         saladProgress.text = saladAmount + "/" + levels[currentLevel].targetSalad;
         if (saladAmount >= levels[currentLevel].targetSalad)
             saladProgress.color = Color.green;
+
+        CheckDemands();
     }
 
     public void AddCarrot() {
@@ -61,6 +66,8 @@ public class GameManager : MonoBehaviour
         carrotProgress.text = carrotAmount + "/" + levels[currentLevel].targetCarrot;
         if (carrotAmount >= levels[currentLevel].targetCarrot)
             carrotProgress.color = Color.green;
+
+        CheckDemands();
     }
 
     public void AddPumpkin() {
@@ -69,6 +76,20 @@ public class GameManager : MonoBehaviour
         pumpkinProgress.text = pumpkinAmount + "/" + levels[currentLevel].targetPumpkin;
         if (pumpkinAmount >= levels[currentLevel].targetPumpkin)
             pumpkinProgress.color = Color.green;
+
+        CheckDemands();
+    }
+
+    public void CheckDemands() {
+        if (saladAmount >= levels[currentLevel].targetSalad && carrotAmount >= levels[currentLevel].targetCarrot && pumpkinAmount >= levels[currentLevel].targetPumpkin) {
+            dayFinishedSucessfully = true;
+            StartCoroutine(EndDay());
+        }
+    }
+
+    private IEnumerator EndDay() {
+        yield return new WaitForSeconds(1);
+        ScreenTransition.Instance.LoadScene("Cutscene");
     }
 }
 

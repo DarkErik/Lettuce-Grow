@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f71f3de65b81d54c83b3fa2a5f985af, type: 3}
+  m_Name: Day1Cutscene
+  m_EditorClassIdentifier: 
+  dialog:
+  - text: "Hmph. You didn\u2019t pass out. That\u2019s already better than most."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
+  - text: "Thanks\u2026 I think?"
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
+  - text: "Don\u2019t get cocky. Today was easy. "
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "The soil was soft, the plants barely needed tending, and I didn\u2019t
+      even yell that much."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "Uh, yeah\u2026 \"not that much.\""
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: But tomorrow? Different story.
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
+  - text: "We got twice the orders, more planting to do, and if you don\u2019t keep
+      up, everything falls apart. "
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 0}
+    exchangeSpriteRight: {fileID: 0}
+  - text: "Customers don\u2019t care if you\u2019re tired. "
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 0}
+    exchangeSpriteRight: {fileID: 0}
+  - text: "And I don\u2019t care either."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 0}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "Great. Can\u2019t wait."
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 0}
+    exchangeSpriteRight: {fileID: 0}
+  - text: "Good. \u2018Cause you\u2019re stuck here now. Be here at sunrise."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 0}
+    exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
+  - text: Aye, aye, Captain.
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 0}
+  - text: "And get some rest. You\u2019ll need it."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}

@@ -818,10 +818,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - targetSalad: 5
-    targetCarrot: 5
-    targetPumpkin: 0
+  - targetSalad: 0
+    targetCarrot: 0
+    targetPumpkin: 3
     dayTimeSeconds: 180
+  - targetSalad: 3
+    targetCarrot: 0
+    targetPumpkin: 3
+    dayTimeSeconds: 180
+  - targetSalad: 3
+    targetCarrot: 3
+    targetPumpkin: 2
+    dayTimeSeconds: 210
+  - targetSalad: 4
+    targetCarrot: 4
+    targetPumpkin: 4
+    dayTimeSeconds: 210
+  - targetSalad: 3
+    targetCarrot: 6
+    targetPumpkin: 2
+    dayTimeSeconds: 210
   saladProgress: {fileID: 1910488973029029220}
   carrotProgress: {fileID: 3439138744880742582}
   pumpkinProgress: {fileID: 7414639626510323699}

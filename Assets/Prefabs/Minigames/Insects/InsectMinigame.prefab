@@ -138,7 +138,7 @@ MonoBehaviour:
   klatschenanim: {fileID: 1316304889280515969}
   offset: 0.2
   fly_velocity: 1
-  klatschenradius: 0.4
+  klatschenradius: 0.6
   klatschenoffset: {x: 0, y: 0.28, z: 0}
 --- !u!95 &1316304889280515969
 Animator:

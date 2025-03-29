@@ -52,7 +52,7 @@ MonoBehaviour:
   typeToMinigamePrefabMapping:
     mapping:
     - {fileID: 6634756310742502330, guid: 3b9d556ea5394a64884c3072bec9f096, type: 3}
-    - {fileID: 6548216315241994798, guid: 26d26c4a5100f004084a425a24c9868b, type: 3}
+    - {fileID: 1035341682480787896, guid: 56d3779bfc64b554e9428c5bd14c06bc, type: 3}
     - {fileID: 6548216315241994798, guid: 26d26c4a5100f004084a425a24c9868b, type: 3}
   targetScale: {x: 6.329009, y: 4.741764}
   minigameBase: {fileID: 1842438476275014863}

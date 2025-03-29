@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3823621218730660701}
-  movementSpeed: 3
+  movementSpeed: 5
   interactionHitbox: {fileID: 2496979973877678185}
   interactionDistance: 0.4
   interactionTimeWindow: 10
