@@ -16,7 +16,7 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame() {
         Debug.Log("Start Game");
-        Debug.Log(ScreenTransition.Instance);
-        ScreenTransition.Instance.LoadScene("Erik's Test");
+        Cutscenes.playInitialCutscene = true;
+        ScreenTransition.Instance.LoadScene("Cutscene");
     }
 }

@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cutscenes : MonoBehaviour {
-    [SerializeField] private CutsceneSO cutScene;
+    public static bool playInitialCutscene = false;
+    public static bool playFailureCutscene = false;
+
+    [SerializeField] private CutsceneSO[] cutscenes;
+    [SerializeField] private CutsceneSO intro;
+    [SerializeField] private CutsceneSO failure;
+
     [SerializeField] private Transform textTransform;
     [SerializeField] private EnhancedTexts text;
     [SerializeField] private Animator animLeft;
@@ -12,8 +18,21 @@ public class Cutscenes : MonoBehaviour {
     [SerializeField] private SpriteRenderer rendererRight;
     [SerializeField] private Vector3 textPositionLeftTalking;
     [SerializeField] private Vector3 textPositionRightTalking;
+    private CutsceneSO cutScene = null;
 
     private void Start() {
+        if (playFailureCutscene) {
+            cutScene = failure;
+            playFailureCutscene = false;
+        }
+        if (playInitialCutscene) {
+            cutScene = intro;
+            playInitialCutscene = false;
+        }
+        if (cutScene == null) {
+            cutScene = cutscenes[GameManager.currentLevel];
+        }
+
         StartCoroutine(DialogRoutine());
     }
 
@@ -44,7 +63,17 @@ public class Cutscenes : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(1);
-        ScreenTransition.Instance.LoadScene(cutScene.transitionToScene);
+        //ScreenTransition.Instance.LoadScene(cutScene.transitionToScene);
+        if (cutScene == intro) {
+            GameManager.currentLevel = 0;
+        } else if (cutScene != failure) {
+            GameManager.currentLevel++;
+            if (GameManager.currentLevel >= 5) {
+                ScreenTransition.Instance.LoadScene("MainMenu");
+                yield break;
+            }
+        }
+        ScreenTransition.Instance.LoadScene("Day_" + GameManager.currentLevel);
 
     }
 }

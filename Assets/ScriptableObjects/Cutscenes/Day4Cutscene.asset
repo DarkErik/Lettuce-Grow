@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f71f3de65b81d54c83b3fa2a5f985af, type: 3}
+  m_Name: Day4Cutscene
+  m_EditorClassIdentifier: 
+  transitionToScene: 
+  dialog:
+  - text: You did well today!
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+  - text: Wait...
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+  - text: Somethings is off!
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+  - text: Yea... I cant quite point it.
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
+  - text: Wait! Try this.
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+  - text: Better?
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: Way better! Anyways...
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: Only one day left.
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: Depends. You barely kept up today.
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "Tomorrow\u2019s the hardest yet.\n\n"
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "Figures. You\u2019re not the type to let me coast to the finish line."
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "No. I\u2019m not. "
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: Customers expect their orders, and I expect you to do your job. No excuses.
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: I get it. One more push.
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "But don\u2019t start slacking now."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
+  - text: "Hmph. You\u2019ve lasted longer than I thought."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}
+  - text: "Wouldn\u2019t dream of it."
+    leftSideTalking: 1
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 0}
+  - text: "Good. Be here early. We\u2019re finishing this right."
+    leftSideTalking: 0
+    exchangeSpriteLeft: {fileID: 21300000, guid: 74d181250a9d8d0438d852148843559e, type: 3}
+    exchangeSpriteRight: {fileID: 21300000, guid: 8c2edf65471dc7c4792e93791ab707ce, type: 3}

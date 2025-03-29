@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class CutsceneSO : ScriptableObject
 {
-    public string transitionToScene;
+    //public string transitionToScene;
     public DialogPiece[] dialog;
 }
 
