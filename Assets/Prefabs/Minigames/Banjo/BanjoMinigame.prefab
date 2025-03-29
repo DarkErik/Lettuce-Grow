@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 4185337580378846276}
   - {fileID: 3204088854602547153}
   scoreField: {fileID: 2655453747954941431}
-  noteExposion: {fileID: 6196554181860965610, guid: 636ab28eeb5911641b6dcd4eb70e36ea, type: 3}
+  noteExplosion: {fileID: 8928805962533546302, guid: 636ab28eeb5911641b6dcd4eb70e36ea, type: 3}
   offset: 0.2
   trigger_y: 0
   spawn_y: 0

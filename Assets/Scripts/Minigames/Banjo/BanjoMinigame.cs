@@ -1,6 +1,7 @@
 using Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Banjo : GenericMinigame
@@ -20,7 +21,7 @@ public class Banjo : GenericMinigame
     [SerializeField] private GameObject[] trigger = new GameObject[3];
     //[SerializeField] private Canvas score;
     [SerializeField] private TMPro.TextMeshProUGUI scoreField;
-    [SerializeField] private ParticleSystem noteExposion;
+    [SerializeField] private GameObject noteExplosion;
 
     public float offset = 0.3f;
     public float trigger_y = 0f;
@@ -30,6 +31,8 @@ public class Banjo : GenericMinigame
     public int numberNotes = 4;
 
     private float[] lanes;
+    private GameObject particleSpawner;      // The gameobject containing the noteExplosion particle effect
+
     private List<GameObject> notes;
     private GameObject deathNote;
     private bool spawnNewNote = true;
@@ -91,6 +94,9 @@ public class Banjo : GenericMinigame
         notes = new List<GameObject>();
         scoreField.transform.position = new Vector3(boundaries.xMin + 1.8f * offset, boundaries.yMax - offset);
 
+        particleSpawner = GameObject.Instantiate(noteExplosion);
+        particleSpawner.transform.parent = transform;
+
         InitControls();
     }
 
@@ -100,6 +106,7 @@ public class Banjo : GenericMinigame
         {
             lanes[i] = boundaries.xMin + offset + 0.25f * (i + 1) * (boundaries.xMax - boundaries.xMin);
             trigger[i].transform.localPosition = new Vector3(lanes[i], trigger_y);
+
             keyPositions[i] = lanes[i]; // the positions for a (0), s (1), d (2)
         }
     }
@@ -125,15 +132,22 @@ public class Banjo : GenericMinigame
                 deathNote = note;
             }
         }
+
         if (deathNote != null)
         {
             notes.Remove(deathNote);
-            ParticleSystem explosion = Instantiate(noteExposion);
-            explosion.transform.localPosition = deathNote.transform.localPosition;
+
+            // Play noteExplosion particle system
+            particleSpawner.transform.localPosition = deathNote.transform.localPosition;
+            ParticleSystem explosion = particleSpawner.GetComponent<ParticleSystem>();
+            explosion.Clear();
             explosion.Play();
+
+
             Destroy(deathNote);
             deathNote = null;
         }
+
         if (!didYouHitANote)
         {
             SoundManager.Instance.PlayBanjoMissedSound(this.transform.position);
@@ -233,6 +247,7 @@ public class Banjo : GenericMinigame
         yield return new WaitForSeconds(waitingTime);
         spawnNewNote = true;
     }
+
     private void SpawnNote()
     {
         int lane = Random.Range(0, 3);
