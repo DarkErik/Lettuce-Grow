@@ -50,6 +50,8 @@ public class ItemDepot : MonoBehaviour {
         isInPossession = false;
         childCarriableComponent.PickUp(parent);
 
+        SoundManager.Instance.PlayItemGrabbedSound(this.transform.position);
+
         return childCarriableComponent;
     }
 
@@ -57,6 +59,8 @@ public class ItemDepot : MonoBehaviour {
     public void Drop() {
         isInPossession = true;
         childCarriableComponent.Drop();
+
+        SoundManager.Instance.PlayItemPlacedSound(this.transform.position);
 
         childObject.transform.parent = this.transform;
         childObject.transform.position = new Vector3(this.transform.position.x + childObjectPosition.x, this.transform.position.y + childObjectPosition.y, childObject.transform.position.z);

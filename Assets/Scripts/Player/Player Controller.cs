@@ -255,7 +255,8 @@ namespace Player {
                                     ResetInteraction();
 
                                     // TODO: use plantProgressionManager.GetObjectForCurrentNeed to check for the right object if more objects are available
-                                    plantProgressionManager.OnObjectForNeedProvided();
+                                    if (plantProgressionManager.GetObjectForCurrentNeed() == currentlyCarriedType)
+                                        plantProgressionManager.OnObjectForNeedProvided();
                                     break;
                                 }
 
