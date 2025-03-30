@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     private const string homeBrewPlayerPrefsKey = "isHomeBrewActive";
     private bool isHomeBrewActive;
 
+    private const string sfxMasterVolumePlayerPrefsKey = "sfxMasterVolume";
     private float masterVolume = 1f;
 
     private void Awake()
@@ -21,6 +22,19 @@ public class SoundManager : MonoBehaviour
     public void ChangeHomeBrewMode(bool isHomeBrewActive) {
         this.isHomeBrewActive = isHomeBrewActive;
         PlayerPrefs.SetInt(homeBrewPlayerPrefsKey, (this.isHomeBrewActive ? 1 : 0));
+    }
+
+    public void ChangeMasterVolume(float newVolume) { 
+        masterVolume = newVolume;
+        PlayerPrefs.SetFloat(sfxMasterVolumePlayerPrefsKey, newVolume);
+    }
+
+    public float GetMasterVolume() { 
+        return masterVolume;
+    }
+
+    public bool GetIsHomeBrewActive() {
+        return isHomeBrewActive;
     }
 
     public void PlayFliegenklatscheSound(Vector3 position, float volume = 1f) {

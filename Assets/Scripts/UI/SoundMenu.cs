@@ -64,15 +64,17 @@ public class SoundMenu : MonoBehaviour
 
     //MICHA PLEASE IMPLEMENT THE FOLLOWING FUNCTIONS
     public bool WackySoundsEnabled() {
-        return true;
+        return SoundManager.Instance.GetIsHomeBrewActive();
     }
     public void SetSounds(bool enabled) {
         Debug.Log($"Whacky Sounds: {enabled}");
+        SoundManager.Instance.ChangeHomeBrewMode(enabled);
     }
     public float GetVolume() {
-        return 0.2f;
+        return SoundManager.Instance.GetMasterVolume();
     }
     public void SetVolume(float volume) {
-        Debug.Log($"Set volume to {volume}");
+        SoundManager.Instance.ChangeMasterVolume(volume);
+        MusicManager.Instance.ChangeRelativeMasterVolume(volume);
     }
 }
