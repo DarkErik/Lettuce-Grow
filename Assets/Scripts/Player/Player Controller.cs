@@ -249,12 +249,11 @@ namespace Player {
 
                                 PlantProgressionManager plantProgressionManager = other.gameObject.GetComponent<PlantProgressionManager>();
 
-                                if (plantProgressionManager != null && plantProgressionManager.GetIsNeedCurrentlyActive() && canMove) {
+                                if (plantProgressionManager != null && plantProgressionManager.GetIsNeedCurrentlyActive() && currentlyCarriedType == plantProgressionManager.GetObjectForCurrentNeed()) {
 
                                     // Reset the interaction trigger first, just to be safe...
                                     ResetInteraction();
 
-                                    // TODO: use plantProgressionManager.GetObjectForCurrentNeed to check for the right object if more objects are available
                                     plantProgressionManager.OnObjectForNeedProvided();
                                     break;
                                 }
