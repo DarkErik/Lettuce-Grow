@@ -11,7 +11,7 @@ public class ScreenTransition : MonoBehaviour
 
     private void Awake() {
         Instance = this;
-        Debug.Log("INstance set!");
+        
         var clips = anim.GetCurrentAnimatorClipInfo(0);
         for (int i = 0; i < clips.Length; i++) {
             if (clips[i].clip.name == "FadeIn") {

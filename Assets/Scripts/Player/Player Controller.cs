@@ -97,6 +97,8 @@ namespace Player {
 
         private void OnInteractPerformed(InputAction.CallbackContext ctx) {
 
+            if (!canMove) { return; }
+
             possibleInteractions.Clear();           // Just to be safe...
             interactionHitbox.enabled = true;
             interactionTimer = interactionTimeWindow;
@@ -113,17 +115,7 @@ namespace Player {
 
             // Process all interactions that occured since the last frame
             // Has to be processed before anything else since it can affect canMove
-            if (possibleInteractions.Count > 0 && interactionHitbox.enabled) {
-
-                // Sort by absolute distance to player
-                foreach (Collider2D i in possibleInteractions.OrderBy(x => Mathf.Abs(Vector3.Distance(transform.position, x.transform.position)))) {
-                    ProcessTriggerEnter2D(i);
-
-                    if (!interactionHitbox.enabled) { break; }
-                }
-
-                possibleInteractions.Clear();
-            }
+            ProcessInteractions();
 
 
 
@@ -157,6 +149,26 @@ namespace Player {
 
                 if (playerAnimation != null) { playerAnimation.ChangeRunning(false); }
             }
+        }
+
+
+        private void ProcessInteractions() {
+
+            if (possibleInteractions.Count == 0) { return; }
+
+
+            if (interactionHitbox.enabled) {
+                // Sort by absolute distance to player
+                foreach (Collider2D i in possibleInteractions.OrderBy(x => Mathf.Abs(Vector3.Distance(transform.position, x.transform.position)))) {
+                    ProcessTriggerEnter2D(i);
+
+                    //Debug.Log("Processed " + i + " - " + interactionHitbox.enabled + " " + canMove);
+                    if (!interactionHitbox.enabled) { break; }
+                }
+
+            }
+
+            possibleInteractions.Clear();
         }
 
 
@@ -244,6 +256,7 @@ namespace Player {
 
                                     // TODO: use plantProgressionManager.GetObjectForCurrentNeed to check for the right object if more objects are available
                                     plantProgressionManager.OnObjectForNeedProvided();
+                                    break;
                                 }
 
                                 break;
@@ -378,9 +391,11 @@ namespace Player {
             if (!canMove) { rigidbody.velocity = Vector2.zero; }
         }
 
-        public bool IsPlayerIsCurrentlyMoving() { 
+
+        public bool IsPlayerCurrentlyMoving() { 
             return canMove && directionVector != Vector2.zero;
         }
+
     }
 
 }
