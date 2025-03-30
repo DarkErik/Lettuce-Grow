@@ -14,6 +14,10 @@ public class MusicManager : MonoBehaviour
 
     private AudioSource musicSource;
 
+    [SerializeField] private AudioClip ambienceMusic;
+    [SerializeField] private AudioClip intenseMusic;
+    [SerializeField] private float fadeTime;
+
     private void Awake()
     {
         Instance = this;
@@ -22,6 +26,41 @@ public class MusicManager : MonoBehaviour
         maxVolume = musicSource.volume;
 
         relativeMasterVolume = PlayerPrefs.GetFloat(musicMasterVolumePlayerPrefsKey, relativeMasterVolume);
+        realMasterVolume = maxVolume * relativeMasterVolume;
+        musicSource.volume = realMasterVolume;
+
+        musicSource.clip = ambienceMusic;
+        musicSource.Play();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnStressPhaseEntered += GameManager_OnStressPhaseEntered;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnStressPhaseEntered -= GameManager_OnStressPhaseEntered;
+    }
+
+    private void GameManager_OnStressPhaseEntered(object sender, System.EventArgs e)
+    {
+        StartCoroutine(Fade());
+    }
+
+    private IEnumerator Fade() {
+        float timer = 0f;
+        while (timer < fadeTime) {           
+            float fadeProgress = timer / fadeTime;
+            realMasterVolume = maxVolume * relativeMasterVolume * (1-fadeProgress);
+            musicSource.volume = realMasterVolume;
+            yield return null;
+
+            timer += Time.deltaTime;
+        }
+
+        musicSource.clip = intenseMusic;
+        musicSource.Play();
         realMasterVolume = maxVolume * relativeMasterVolume;
         musicSource.volume = realMasterVolume;
     }

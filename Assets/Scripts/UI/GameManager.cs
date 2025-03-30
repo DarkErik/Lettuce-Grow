@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static int currentLevel = 0;
     public static bool easyMode = false;
 
+    public static event EventHandler OnStressPhaseEntered;
+
     [SerializeField] private Level[] levels;
     
     [SerializeField] private TextMeshProUGUI saladProgress;
@@ -22,12 +24,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Image timePassedProgressBar;
 
+    [Range(0.1f, 0.9f)]
+    [SerializeField] private float stressPhaseEnteringThreshold;
+
     private int saladAmount = -1;
     private int carrotAmount = -1;
     private int pumpkinAmount = -1;
 
     private float levelStartedTime;
     private bool dayFinishedSucessfully = false;
+
+    
+    private bool stressPhaseHasBeenEntered = false;
 
     private void Awake() {
         Instance = this;
@@ -43,6 +51,12 @@ public class GameManager : MonoBehaviour
     public void Update() {
         float progress = (Time.time - levelStartedTime) / levels[currentLevel].dayTimeSeconds;
         timePassedProgressBar.fillAmount = progress;
+
+        if (progress >= stressPhaseEnteringThreshold && !stressPhaseHasBeenEntered) {
+            stressPhaseHasBeenEntered = true;
+            OnStressPhaseEntered?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Entered Stress Phase");
+        }
         
         if (progress >= 1f && !dayFinishedSucessfully && !easyMode) {
             Debug.Log("Time up!");
