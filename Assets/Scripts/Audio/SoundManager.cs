@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
         isHomeBrewActive = (PlayerPrefs.GetInt(homeBrewPlayerPrefsKey) != 0);
+        masterVolume = PlayerPrefs.GetFloat(sfxMasterVolumePlayerPrefsKey, masterVolume);
     }
 
     public void ChangeHomeBrewMode(bool isHomeBrewActive) {
@@ -27,6 +28,7 @@ public class SoundManager : MonoBehaviour
     public void ChangeMasterVolume(float newVolume) { 
         masterVolume = newVolume;
         PlayerPrefs.SetFloat(sfxMasterVolumePlayerPrefsKey, newVolume);
+        Debug.Log($"Set volume to {newVolume}");
     }
 
     public float GetMasterVolume() { 

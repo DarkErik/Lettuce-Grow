@@ -21,7 +21,7 @@ public class MusicManager : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         maxVolume = musicSource.volume;
 
-        relativeMasterVolume = PlayerPrefs.GetFloat(musicMasterVolumePlayerPrefsKey);
+        relativeMasterVolume = PlayerPrefs.GetFloat(musicMasterVolumePlayerPrefsKey, relativeMasterVolume);
         realMasterVolume = maxVolume * relativeMasterVolume;
         musicSource.volume = realMasterVolume;
     }
