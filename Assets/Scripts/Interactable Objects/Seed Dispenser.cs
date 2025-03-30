@@ -60,6 +60,8 @@ public class SeedDispenser : MonoBehaviour {
         count--;
         if (count == 0) { contentVisual.SetActive(false); }
 
+        SoundManager.Instance.PlayItemGrabbedSound(this.transform.position);
+
         return dispensedSeedCarriableComponent;
     }
 
@@ -67,6 +69,8 @@ public class SeedDispenser : MonoBehaviour {
     public void Drop() {
         count++;
         dispensedSeedCarriableComponent.Drop();
+
+        SoundManager.Instance.PlayItemPlacedSound(this.transform.position);
 
         GameObject.Destroy(dispensedSeed);
         dispensedSeed = null;
