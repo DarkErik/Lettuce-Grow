@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(FlowerpotBaseLogic))]
 public class PlantProgressionManager : MonoBehaviour
 {
+
     [SerializeField] private GameObject minigameGameObject; //MinigameFrame
     private MinigameFrame minigameFrame;
     [SerializeField] private GameObject bubbleGameObject; // PlantsNeedsBouble
@@ -13,6 +14,7 @@ public class PlantProgressionManager : MonoBehaviour
     [SerializeField] private GameObject dustCloudPrefab;
 
     [SerializeField] private ProgressBarUI progressBarUI;
+
 
     private FlowerpotBaseLogic flowerpotBaseLogic;
     private PlantSO plantData;

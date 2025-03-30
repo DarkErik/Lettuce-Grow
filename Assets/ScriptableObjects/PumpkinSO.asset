@@ -21,8 +21,8 @@ MonoBehaviour:
   plantNeedMapping:
     mapping:
     - pickChance: 1
-      neededCarriableItem: 0
+      neededCarriableItem: 4
     - pickChance: 1
-      neededCarriableItem: 0
+      neededCarriableItem: 5
     - pickChance: 1
-      neededCarriableItem: 0
+      neededCarriableItem: 6
