@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public static int currentLevel = 0;
+    public static bool easyMode = false;
 
     [SerializeField] private Level[] levels;
     
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         float progress = (Time.time - levelStartedTime) / levels[currentLevel].dayTimeSeconds;
         timePassedProgressBar.fillAmount = progress;
         
-        if (progress >= 1f && !dayFinishedSucessfully) {
+        if (progress >= 1f && !dayFinishedSucessfully && !easyMode) {
             Debug.Log("Time up!");
             Cutscenes.playFailureCutscene = true;
             ScreenTransition.Instance.LoadScene("Cutscene");
