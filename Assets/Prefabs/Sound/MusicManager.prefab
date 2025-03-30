@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5199341438695162510}
   - component: {fileID: 4539432219016353736}
+  - component: {fileID: 3165839898077663179}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -42,9 +43,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 46a81478c0b6749a390ef960f84a1bce, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -128,3 +129,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3165839898077663179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641297764653011656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e341e1e999a844e83eb57325c6f966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambienceMusic: {fileID: 8300000, guid: 02c20ca847ead403182e01ba97ea761f, type: 3}
+  intenseMusic: {fileID: 8300000, guid: 46a81478c0b6749a390ef960f84a1bce, type: 3}
+  fadeTime: 3
