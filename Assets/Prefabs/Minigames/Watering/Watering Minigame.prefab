@@ -133,13 +133,13 @@ MonoBehaviour:
   wateringCan: {fileID: 197762046935666360}
   waterDropletParticleSystem: {fileID: 5869440738127939761}
   particleSystemHandler: {fileID: 8252278335154581721}
-  yPosition: 1.85
+  yPosition: 1.65
   wateringCanTiltAngle: 310
   wateringCanTiltSpeed: 5
   wateringCanMoveSpeed: 0.125
   plantPrefab: {fileID: 6633840687983738108, guid: 7a25cfc28c09ef44b9f7e188c9ca7059, type: 3}
   plantY: -1.7
-  plantWidth: 0.25
+  plantWidth: 0.35
   positionOffset: {x: 1.1, y: 0.2}
   numPlants: {x: 2, y: 3}
   normDistrValues: {x: 2.6, y: 0.6}
