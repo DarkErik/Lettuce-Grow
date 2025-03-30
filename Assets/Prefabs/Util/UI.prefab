@@ -843,7 +843,7 @@ MonoBehaviour:
   pumpkinProgress: {fileID: 7414639626510323699}
   dayBannerTxt: {fileID: 763305780319281472}
   timePassedProgressBar: {fileID: 7906109804370263575}
-  stressPhaseEnteringThreshold: 0.1
+  stressPhaseEnteringThreshold: 0.8
 --- !u!1 &6004246662038498937
 GameObject:
   m_ObjectHideFlags: 0
