@@ -67,9 +67,11 @@ public class InsectMinigame : GenericMinigame
     {
         boundaries = GetBounds();
         InitControls();
+
         //bgImage = new Vector2(1/boundaries.width, 1/boundaries.height);
         //SetBGImage(bgImage.sprite);
         //SetBGColor(new Color(1f, 1f, 1f));
+
         SetBGColor(new Color(0.2f, 0.6f, 0.2f));
         SpawnFlies();
     }
@@ -111,6 +113,7 @@ public class InsectMinigame : GenericMinigame
         {
             float xPos = Random.Range(boundaries.xMin + offset, boundaries.xMax - offset);
             float yPos = Random.Range(boundaries.yMin + offset, boundaries.yMax - offset);
+
             flies[i] = Instantiate(fly, this.transform);
             flies[i].transform.position = new Vector3(xPos, yPos);
             flies_direction[i] = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
@@ -149,11 +152,14 @@ public class InsectMinigame : GenericMinigame
             if (flies[i].transform.position.x < (boundaries.xMin + offset) || flies[i].transform.position.x > (boundaries.xMax - offset))
             {
                 flies_direction[i].x *= -1;
+                flies[i].transform.position = new Vector3(Mathf.Clamp(flies[i].transform.position.x, boundaries.xMin + offset, boundaries.xMax - offset), flies[i].transform.position.y, flies[i].transform.position.z);
             }
             if (flies[i].transform.position.y < (boundaries.yMin + offset) || flies[i].transform.position.y > (boundaries.yMax - offset))
             {
                 flies_direction[i].y *= -1;
+                flies[i].transform.position = new Vector3(flies[i].transform.position.x, Mathf.Clamp(flies[i].transform.position.y, boundaries.yMin + offset, boundaries.yMax - offset), flies[i].transform.position.z);
             }
+
             flies[i].transform.localPosition += flies_direction[i] * fly_velocity * Time.deltaTime;
         }
 
