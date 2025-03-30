@@ -97,6 +97,7 @@ public class Banjo : GenericMinigame
         particleSpawner = GameObject.Instantiate(noteExplosion);
         particleSpawner.transform.parent = transform;
 
+        scoreField.text = $"{completedNotes} / {numberNotes}";
         InitControls();
     }
 
@@ -140,7 +141,7 @@ public class Banjo : GenericMinigame
             // Play noteExplosion particle system
             particleSpawner.transform.localPosition = deathNote.transform.localPosition;
             ParticleSystem explosion = particleSpawner.GetComponent<ParticleSystem>();
-            explosion.Clear();
+            //explosion.Clear();
             explosion.Play();
 
 
