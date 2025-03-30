@@ -255,6 +255,7 @@ namespace Player {
                                     ResetInteraction();
 
                                     plantProgressionManager.OnObjectForNeedProvided();
+									
                                     break;
                                 }
 
