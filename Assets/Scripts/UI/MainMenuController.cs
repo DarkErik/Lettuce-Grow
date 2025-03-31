@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -27,5 +28,9 @@ public class MainMenuController : MonoBehaviour
             Cutscenes.playInitialCutscene = true;
         Debug.Log("Start Game");
         ScreenTransition.Instance.LoadScene("Cutscene");
+    }
+
+    public void RollCredits() {
+        ScreenTransition.Instance.LoadScene("Credits");
     }
 }
