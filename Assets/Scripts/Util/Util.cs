@@ -18,10 +18,10 @@ public class Util
     }
 
     public static float GetAnimationClipLength(Animator anim, string clipName) {
-        var clips = anim.GetCurrentAnimatorClipInfo(0);
+        var clips = anim.runtimeAnimatorController.animationClips;
         for (int i = 0; i < clips.Length; i++) {
-            if (clips[i].clip.name == clipName) {
-                return clips[i].clip.length;
+            if (clips[i].name == clipName) {
+                return clips[i].length;
             }
         }
         return -1;

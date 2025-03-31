@@ -22,7 +22,7 @@ public class InsectMinigame : GenericMinigame
     [SerializeField] private GameObject fly;
     [SerializeField] private GameObject flutsch;
     [SerializeField] private Animator klatschenanim;
-    [SerializeField] private SpriteRenderer bgImage;
+    [SerializeField] private Sprite bgImage;
 
 
     public float offset = 0f;
@@ -68,11 +68,8 @@ public class InsectMinigame : GenericMinigame
         boundaries = GetBounds();
         InitControls();
 
-        //bgImage = new Vector2(1/boundaries.width, 1/boundaries.height);
-        //SetBGImage(bgImage.sprite);
-        //SetBGColor(new Color(1f, 1f, 1f));
-
-        SetBGColor(new Color(0.2f, 0.6f, 0.2f));
+        SetBGImage(bgImage);
+        SetBGColor(Color.white);
         SpawnFlies();
     }
 
