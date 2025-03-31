@@ -22,7 +22,18 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null) {
+            if (Instance.musicSource.clip == intenseMusic) {
+                Instance.FadeToAmbient();
+            }
+
+
+            Destroy(this.gameObject);
+            return;
+        }
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
 
         musicSource = GetComponent<AudioSource>();
         maxVolume = musicSource.volume;
@@ -35,28 +46,16 @@ public class MusicManager : MonoBehaviour
         musicSource.Play();
     }
 
-    private void OnEnable()
-    {
-        if (isNotInLevel)
-            return;
 
-        GameManager.OnStressPhaseEntered += GameManager_OnStressPhaseEntered;
+    public void FadeToAmbient() {
+        StartCoroutine(Fade(ambienceMusic));
+    }
+    public void GameManager_OnStressPhaseEntered()
+    {
+        StartCoroutine(Fade(intenseMusic));
     }
 
-    private void OnDisable()
-    {
-        if (isNotInLevel)
-            return;
-
-        GameManager.OnStressPhaseEntered -= GameManager_OnStressPhaseEntered;
-    }
-
-    private void GameManager_OnStressPhaseEntered(object sender, System.EventArgs e)
-    {
-        StartCoroutine(Fade());
-    }
-
-    private IEnumerator Fade() {
+    private IEnumerator Fade(AudioClip fade2) {
         float timer = 0f;
         while (timer < fadeTime) {           
             float fadeProgress = timer / fadeTime;
@@ -67,7 +66,7 @@ public class MusicManager : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        musicSource.clip = intenseMusic;
+        musicSource.clip = fade2;
         musicSource.Play();
         realMasterVolume = maxVolume * relativeMasterVolume;
         musicSource.volume = realMasterVolume;

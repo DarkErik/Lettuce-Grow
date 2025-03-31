@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CarrotSO
   m_EditorClassIdentifier: 
   plantType: 1
-  neededGrothTime: 9
+  neededGrothTime: 11
   regressionSpeedFactor: 0.3
   initalNeedDelayAfterPlanting: 0
-  minNeedTime: 5
-  maxNeedTime: 5
+  minNeedTime: 7
+  maxNeedTime: 7
   plantNeedMapping:
     mapping:
     - pickChance: 1
