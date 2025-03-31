@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dayBannerTxt;
 
     [SerializeField] private Image timePassedProgressBar;
+    [SerializeField] private Animator vinigetteAnim;
 
     [Range(0.1f, 0.9f)]
     [SerializeField] private float stressPhaseEnteringThreshold;
@@ -54,7 +55,8 @@ public class GameManager : MonoBehaviour
 
         if (progress >= stressPhaseEnteringThreshold && !stressPhaseHasBeenEntered) {
             stressPhaseHasBeenEntered = true;
-            OnStressPhaseEntered?.Invoke(this, EventArgs.Empty);
+            MusicManager.Instance.GameManager_OnStressPhaseEntered();
+            StartCoroutine(StartVinigetteDelayed());
             Debug.Log("Entered Stress Phase");
         }
         
@@ -65,6 +67,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator StartVinigetteDelayed() {
+        yield return new WaitForSeconds(2.5f);
+        vinigetteAnim.SetTrigger("alarm");
+    }
     public void AddSalad() {
         saladAmount++;
 

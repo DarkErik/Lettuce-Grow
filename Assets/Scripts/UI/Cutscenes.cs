@@ -69,7 +69,7 @@ public class Cutscenes : MonoBehaviour {
         } else if (cutScene != failure) {
             GameManager.currentLevel++;
             if (GameManager.currentLevel >= 5) {
-                ScreenTransition.Instance.LoadScene("MainMenu");
+                ScreenTransition.Instance.LoadScene("GameWonScene");
                 yield break;
             }
         }
