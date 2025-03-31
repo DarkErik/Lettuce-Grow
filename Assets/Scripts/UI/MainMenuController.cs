@@ -41,6 +41,7 @@ public class MainMenuController : MonoBehaviour
 
     private void WaitForControllerButtonReleaseInputDelay() {
         EventSystem.current.SetSelectedGameObject(GameObject.Find("StartGame"));
+        Debug.Log("Currently selected UI element: " + EventSystem.current.currentSelectedGameObject);
     }
 
 }
