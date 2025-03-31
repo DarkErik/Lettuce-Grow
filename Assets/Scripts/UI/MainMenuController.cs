@@ -44,4 +44,8 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Currently selected UI element: " + EventSystem.current.currentSelectedGameObject);
     }
 
+    public void QuitGame() {
+        Application.Quit();
+    }
+
 }
