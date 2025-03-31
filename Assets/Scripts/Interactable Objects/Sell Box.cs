@@ -11,6 +11,9 @@ public class SellBox : MonoBehaviour {
     [SerializeField]
     private Collider2D interactionHitbox;
 
+    [SerializeField] private GameObject soldParticleFX;
+    [SerializeField] private Transform soldParticleBase;
+
 
 
     private void Start() {
@@ -33,6 +36,7 @@ public class SellBox : MonoBehaviour {
         if (pl == null) { throw new System.Exception("Object " + gameObject + " can not be sold"); }
 
         SoundManager.Instance.PlayPlantSellSound(this.transform.position);
+        Instantiate(soldParticleFX, soldParticleBase);
 
         plantLookupTable[pl.GetPlantType()]();
         GameObject.Destroy(gameObject);
