@@ -17,6 +17,7 @@ public class MinigameFrame : MonoBehaviour
     private float closeAnimTime = -1;
     private void Awake() {
         closeAnimTime = Util.GetAnimationClipLength(anim, "Close");
+        Debug.Log($"Clsogin time: {closeAnimTime}");
     }
 
     public void Init(PlantNeed minigameType) {
@@ -38,6 +39,7 @@ public class MinigameFrame : MonoBehaviour
 
     public void Close() {
         anim.SetTrigger("close");
+        Debug.Log("Closing");
         StartCoroutine(_Close(false));
     }
 
