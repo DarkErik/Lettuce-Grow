@@ -834,7 +834,7 @@ MonoBehaviour:
     targetCarrot: 4
     targetPumpkin: 4
     dayTimeSeconds: 210
-  - targetSalad: 3
+  - targetSalad: 4
     targetCarrot: 6
     targetPumpkin: 2
     dayTimeSeconds: 210
