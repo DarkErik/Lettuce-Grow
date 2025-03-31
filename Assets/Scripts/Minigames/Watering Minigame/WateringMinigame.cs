@@ -1,5 +1,4 @@
 using Player;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,11 +64,27 @@ public class WateringMinigame : GenericMinigame {
     [SerializeField, Tooltip("Delay for closing the minigame after finishing")]
     private float closeDelay;
 
+    // Variant features:
+    [SerializeField, Tooltip("Chance for ativating wind; Range 0-1")]
+    private float chanceForVariant;
+
+    [SerializeField]
+    private ParticleSystem windParticleSystem;
+
+    [SerializeField]
+    private ParticleSystemForceField forceField;
+
+    [SerializeField, Tooltip("Random value between two constants")]
+    private Vector2 windSpeed;
+
     #endregion
 
 
     private GameObject[] plants;
     private int remainingPlants;
+
+    private bool isWindEnabled = false;
+    private float windStrength;
 
 
     #region Input setup logic
@@ -79,7 +94,7 @@ public class WateringMinigame : GenericMinigame {
         controller = inputWrapper.Minigame;
 
         interactButton = new InputButtonWrapper(controller.PrimaryInteract);
-        mouseInputHelper = new MouseInputHelper(controller.MouseMovement, TimeSpan.FromMilliseconds(150));
+        mouseInputHelper = new MouseInputHelper(controller.MouseMovement, System.TimeSpan.FromMilliseconds(150));
 
         initializedControls = true;
         controller.Enable();
@@ -105,6 +120,22 @@ public class WateringMinigame : GenericMinigame {
 
         SpawnPlants();
         remainingPlants = plants.Length;
+
+        // Determine whether to use the variant with wind or not
+        isWindEnabled = Random.Range(0f, 1f) > 1 - chanceForVariant;
+
+        if (isWindEnabled) {
+            windStrength = Random.Range(windSpeed.x, windSpeed.y);
+
+            if (Mathf.Abs(windStrength) > Mathf.Abs(Mathf.Max(windSpeed.x, windSpeed.y)) * 0.66f) {
+                var emmision = windParticleSystem.emission;
+                emmision.rateOverTime = emmision.rateOverTime.constant * 1.5f;
+            }
+
+
+            windParticleSystem.Play();
+        }
+
     }
 
 
@@ -157,7 +188,7 @@ public class WateringMinigame : GenericMinigame {
             mouseInputHelper.Update(mousePos);
             
             position = mousePos.x;
-            
+
         } else {
             position = wateringCan.transform.position.x + wateringCanMoveSpeed * controller.Move.ReadValue<Vector2>().x;
         }
@@ -166,6 +197,7 @@ public class WateringMinigame : GenericMinigame {
         Rect bounds = GetBounds();
         wateringCan.transform.position = new Vector3(Mathf.Clamp(position, bounds.xMin, bounds.xMax), yPosition, wateringCan.transform.position.z);
 
+        forceField.directionX = windStrength * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad));
 
         // isEmitting seems to be the best one - isStopped needs the current cycle to end before it updates
         //Debug.Log(waterDropletParticleSystem.isPlaying + " " + waterDropletParticleSystem.isStopped + " " + waterDropletParticleSystem.isEmitting);
