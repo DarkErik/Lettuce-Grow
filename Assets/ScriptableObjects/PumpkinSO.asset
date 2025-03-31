@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PumpkinSO
   m_EditorClassIdentifier: 
   plantType: 0
-  neededGrothTime: 10
-  regressionSpeedFactor: 0
-  initalNeedDelayAfterPlanting: 2
-  minNeedTime: 3
-  maxNeedTime: 5
+  neededGrothTime: 15
+  regressionSpeedFactor: 0.3
+  initalNeedDelayAfterPlanting: 0
+  minNeedTime: 9
+  maxNeedTime: 9
   plantNeedMapping:
     mapping:
     - pickChance: 1
