@@ -167,6 +167,8 @@ public class InsectMinigame : GenericMinigame
 
     private IEnumerator WaitAndClose()
     {
+        SoundManager.Instance.PlayMinigameSuccessSound(this.transform.position);
+
         yield return new WaitForSeconds(1);
         Close();
         Debug.Log("closing");
