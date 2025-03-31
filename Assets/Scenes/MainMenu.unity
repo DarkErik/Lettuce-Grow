@@ -3313,10 +3313,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<size=150%>Controls</size>\n\n\t        /    to move\n         /    /    
-    to interact\n     /    /                  /    /          in Minigames\n\n<size=80%>Grab
-    seeds out of the seed boxes.\nPlant them, and fulfill their needs, with the watering
-    can, the banjo and the fly swatter.\nWhen fully grown, transport the vegtables
-    into the sell box.\nFullfil the daily demands to progress.\n</size>"
+    to interact\n     /    /                  /    /          in Minigames\nEsc/Start
+    to pause the game\n\n<size=90%>Grab seeds out of the seed boxes.\nPlant them,
+    and fulfill their needs, with the watering can, the banjo and the fly swatter.\nWhen
+    fully grown, transport the vegtables into the sell box.\nFullfil the daily demands
+    to progress.\n</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
   m_sharedMaterial: {fileID: -6435251239669720936, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
