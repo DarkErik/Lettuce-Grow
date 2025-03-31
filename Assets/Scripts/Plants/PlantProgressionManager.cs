@@ -147,6 +147,10 @@ public class PlantProgressionManager : MonoBehaviour
         }
         else if (currentGrothPhase == GrothPhase.REGRESSING) 
         {
+            // Do not regress the plant if the player plays a minigame of this plant
+            if (minigameHasStarted)
+                return;
+
             currentGrothProgress -= Time.deltaTime * plantData.regressionSpeedFactor;
             if (currentGrothProgress < 0)
             {

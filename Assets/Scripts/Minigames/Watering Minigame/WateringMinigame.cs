@@ -11,7 +11,7 @@ public class WateringMinigame : GenericMinigame {
     private InputButtonWrapper interactButton;
     private MouseInputHelper mouseInputHelper;
     private bool initializedControls;
-
+    [SerializeField] private Sprite bgImage;
 
     private static System.Random random = new System.Random();
 
@@ -114,7 +114,9 @@ public class WateringMinigame : GenericMinigame {
 
 
     public override void StartUp() {
-        SetBGColor(new Color(135 / 255f, 205 / 255f, 250 / 255f));
+        SetBGColor(Color.white);
+        SetBGImage(bgImage);
+        //SetBGColor(new Color(135 / 255f, 205 / 255f, 250 / 255f));
         InitControls();
 
 

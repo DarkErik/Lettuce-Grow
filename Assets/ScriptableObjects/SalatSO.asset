@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantType: 2
   neededGrothTime: 10
-  regressionSpeedFactor: 0
-  initalNeedDelayAfterPlanting: 2
-  minNeedTime: 3
-  maxNeedTime: 5
+  regressionSpeedFactor: 0.5
+  initalNeedDelayAfterPlanting: 0
+  minNeedTime: 6
+  maxNeedTime: 8
   plantNeedMapping:
     mapping:
     - pickChance: 1

@@ -23,6 +23,7 @@ public class Banjo : GenericMinigame
     [SerializeField] private TMPro.TextMeshProUGUI scoreField;
     [SerializeField] private GameObject noteExplosion;
     [SerializeField] private Vector2 notePitchRange = new Vector2(1, 1);
+    [SerializeField] private GameObject[] strings;
 
     public float offset = 0.3f;
     public float trigger_y = 0f;
@@ -82,8 +83,7 @@ public class Banjo : GenericMinigame
 
     public override void StartUp()
     {
-        SetBGColor(new Color(0.5f, 0.5f, 0.0f));
-
+        SetBGColor(new Color(193f / 255f, 154f / 255f, 107f / 255f));
         boundaries = GetBounds();
         trigger_y = boundaries.yMin + offset;
         spawn_y = boundaries.yMax;
@@ -108,7 +108,7 @@ public class Banjo : GenericMinigame
         {
             lanes[i] = boundaries.xMin + offset + 0.25f * (i + 1) * (boundaries.xMax - boundaries.xMin);
             trigger[i].transform.localPosition = new Vector3(lanes[i], trigger_y);
-
+            strings[i].transform.localPosition = new Vector3(lanes[i], strings[i].transform.localPosition.y);
             keyPositions[i] = lanes[i]; // the positions for a (0), s (1), d (2)
         }
     }
