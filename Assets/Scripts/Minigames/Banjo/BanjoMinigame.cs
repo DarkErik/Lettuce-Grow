@@ -237,6 +237,8 @@ public class Banjo : GenericMinigame
 
     private IEnumerator Finished()
     {
+        SoundManager.Instance.PlayMinigameSuccessSound(this.transform.position);
+
         yield return new WaitForSeconds(1);
         Close();
         Debug.Log("closing");

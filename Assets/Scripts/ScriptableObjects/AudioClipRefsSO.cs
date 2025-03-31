@@ -38,4 +38,6 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip[] banjoHitHomeBrew;
     public AudioClip[] banjoMissed;
     public AudioClip[] banjoMissedHomeBrew;
+    public AudioClip[] minigameSuccess;
+    public AudioClip[] minigameSuccessHomeBrew;
 }
