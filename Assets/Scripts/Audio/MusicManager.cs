@@ -18,6 +18,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioClip intenseMusic;
     [SerializeField] private float fadeTime;
 
+    [SerializeField] private bool isNotInLevel;
+
     private void Awake()
     {
         Instance = this;
@@ -35,11 +37,17 @@ public class MusicManager : MonoBehaviour
 
     private void OnEnable()
     {
+        if (isNotInLevel)
+            return;
+
         GameManager.OnStressPhaseEntered += GameManager_OnStressPhaseEntered;
     }
 
     private void OnDisable()
     {
+        if (isNotInLevel)
+            return;
+
         GameManager.OnStressPhaseEntered -= GameManager_OnStressPhaseEntered;
     }
 
