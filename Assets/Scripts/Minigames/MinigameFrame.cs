@@ -20,8 +20,16 @@ public class MinigameFrame : MonoBehaviour
     }
 
     public void Init(PlantNeed minigameType) {
-        GameObject minigameObj = typeToMinigamePrefabMapping[minigameType];
-        minigameObj = Instantiate(minigameObj, minigameBase);
+
+        GameObject minigameObj = Instantiate(typeToMinigamePrefabMapping[minigameType], minigameBase);
+
+        // Check if the instatnitated object is a minigame version selector and handle it accordingly
+        ManageAltMinigameVersions versions = minigameObj.GetComponent<ManageAltMinigameVersions>();
+        
+        if (versions != null) {
+            minigameObj = Instantiate(versions.GetRandomVersion(), minigameBase);
+        }
+
         
         GenericMinigame game = minigameObj.GetComponent<GenericMinigame>();
         game.Init(this);

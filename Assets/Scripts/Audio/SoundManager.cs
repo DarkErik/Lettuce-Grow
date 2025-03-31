@@ -60,10 +60,10 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClips, position, volume);
     }
 
-    public void PlayBanjoHitSound(Vector3 position, float volume = 1f)
+    public void PlayBanjoHitSound(Vector3 position, float volume = 1f, float pitch = 1f)
     {
         AudioClip[] audioClips = isHomeBrewActive ? audioClipRefsSO.banjoHitHomeBrew : audioClipRefsSO.banjoHit;
-        PlaySound(audioClips, position, volume);
+        PlaySoundEx(audioClips[Random.Range(0, audioClips.Length)], position, volume, 1f, pitch);
     }
 
     public void PlayBanjoMissedSound(Vector3 position, float volume = 1f)
@@ -119,4 +119,29 @@ public class SoundManager : MonoBehaviour
     {
         PlaySound(audioClipArray[Random.Range(0, audioClipArray.Length)], position, volume);
     }
+
+
+    /// <summary>
+    /// Does pretty much the same as AudioSource.PlayClipAtPoint, but with more parameters exposed
+    /// </summary>
+    /// <param name="audioClip"></param>
+    /// <param name="position"></param>
+    /// <param name="volume"></param>
+    /// <param name="spatialBlend"></param>
+    /// <param name="pitch"></param>
+    private void PlaySoundEx(AudioClip audioClip, Vector3 position, float volume = 1f, float spatialBlend = 1f, float pitch = 1f) {
+        
+        GameObject gameObject = new GameObject("One shot audio Ex");
+        gameObject.transform.position = position;
+        
+        AudioSource audioSource = (AudioSource)gameObject.AddComponent(typeof(AudioSource));
+        audioSource.clip = audioClip;
+        audioSource.spatialBlend = spatialBlend;
+        audioSource.volume = volume;
+        audioSource.pitch = pitch;
+        audioSource.Play();
+        
+        Object.Destroy(gameObject, audioClip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+    }
+
 }

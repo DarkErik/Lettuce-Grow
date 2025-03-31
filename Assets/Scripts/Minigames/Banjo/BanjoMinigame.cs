@@ -22,6 +22,7 @@ public class Banjo : GenericMinigame
     //[SerializeField] private Canvas score;
     [SerializeField] private TMPro.TextMeshProUGUI scoreField;
     [SerializeField] private GameObject noteExplosion;
+    [SerializeField] private Vector2 notePitchRange = new Vector2(1, 1);
 
     public float offset = 0.3f;
     public float trigger_y = 0f;
@@ -156,7 +157,7 @@ public class Banjo : GenericMinigame
         }
         else
         {
-            SoundManager.Instance.PlayBanjoHitSound(this.transform.position);
+            SoundManager.Instance.PlayBanjoHitSound(transform.position, 1, notePitchRange.x + key * (notePitchRange.y - notePitchRange.x) / (lanes.Length - 1));
         }
         scoreField.text = $"{completedNotes} / {numberNotes}";
     }
