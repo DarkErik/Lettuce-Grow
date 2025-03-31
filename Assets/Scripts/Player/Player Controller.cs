@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -126,7 +127,7 @@ namespace Player {
                 // Update direction and apply movement
                 if (directionVector != Vector2.zero) { lastValidDirectionVector = directionVector; }
                 directionVector = controller.Move.ReadValue<Vector2>().normalized;
-
+                var a = directionVector;
                 rigidbody.velocity = directionVector * new Vector2(movementSpeed, movementSpeed);
 
                 // Animation stuff
@@ -139,23 +140,28 @@ namespace Player {
                     interactionTimer--;
 
                     // Adjust the position of the interaction hitbox according to the direction
-                    if (directionVector == Vector2.zero) { directionVector = lastValidDirectionVector; }
-                    interactionHitbox.offset = directionVector * new Vector2(interactionDistance, interactionDistance);
+                    if (directionVector == Vector2.zero) {
+                        interactionHitbox.offset = lastValidDirectionVector * new Vector2(interactionDistance, interactionDistance);
+                    } else {
+                        interactionHitbox.offset = directionVector * new Vector2(interactionDistance, interactionDistance);
+                    }
+                    
 
                     if (interactionTimer == 0) { interactionHitbox.enabled = false; }
                 }
-
+                
             } else {
 
                 if (playerAnimation != null) { playerAnimation.ChangeRunning(false); }
             }
+
+
         }
 
 
         private void ProcessInteractions() {
 
             if (possibleInteractions.Count == 0) { return; }
-
 
             if (interactionHitbox.enabled) {
                 // Sort by absolute distance to player
@@ -392,7 +398,7 @@ namespace Player {
         }
 
 
-        public bool IsPlayerCurrentlyMoving() { 
+        public bool IsPlayerCurrentlyMoving() {
             return canMove && directionVector != Vector2.zero;
         }
 
