@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f71f3de65b81d54c83b3fa2a5f985af, type: 3}
   m_Name: Failure
   m_EditorClassIdentifier: 
-  transitionToScene: 
   dialog:
-  - text: Unbelievable. You think this is a hobby?
+  - text: Unbeleafable. You think this is a hobby?
     leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
     exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
@@ -22,7 +21,7 @@ MonoBehaviour:
     leftSideTalking: 0
     exchangeSpriteLeft: {fileID: 21300000, guid: e5b667077ebaa52468856bbff0a85cc4, type: 3}
     exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}
-  - text: "I tried\u2014"
+  - text: "I tried, it was almost enough\u2014"
     leftSideTalking: 1
     exchangeSpriteLeft: {fileID: 21300000, guid: f34a82890d040fb4881ab05f64ac14fe, type: 3}
     exchangeSpriteRight: {fileID: 21300000, guid: d2abcf4d115bcd041aa82a23777f78b6, type: 3}

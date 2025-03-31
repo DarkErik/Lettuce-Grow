@@ -197,6 +197,8 @@ public class WateringMinigame : GenericMinigame {
         remainingPlants--;
 
         if (remainingPlants == 0) {
+            SoundManager.Instance.PlayMinigameSuccessSound(this.transform.position);
+
             this.Invoke(nameof(Close), closeDelay);
         }
     }

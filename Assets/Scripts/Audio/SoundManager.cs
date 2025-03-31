@@ -39,6 +39,12 @@ public class SoundManager : MonoBehaviour
         return isHomeBrewActive;
     }
 
+    public void PlayMinigameSuccessSound(Vector3 position, float volume = 1f)
+    {
+        AudioClip[] audioClips = isHomeBrewActive ? audioClipRefsSO.minigameSuccessHomeBrew: audioClipRefsSO.minigameSuccess;
+        PlaySound(audioClips, position, volume);
+    }
+
     public void PlayFliegenklatscheSound(Vector3 position, float volume = 1f) {
         AudioClip[] audioClips = isHomeBrewActive ? audioClipRefsSO.klatschHomeBrew : audioClipRefsSO.klatsch;
         PlaySound(audioClips, position, volume);
