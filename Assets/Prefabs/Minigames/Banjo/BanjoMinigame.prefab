@@ -535,6 +535,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6330783026335342497}
     m_Modifications:
     - target: {fileID: 4461653064998599271, guid: e1a97f9f20ebf9e4184354d57fb44837, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461653064998599271, guid: e1a97f9f20ebf9e4184354d57fb44837, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
@@ -583,8 +587,16 @@ PrefabInstance:
       value: Strings
       objectReference: {fileID: 0}
     - target: {fileID: 8033583514440186550, guid: e1a97f9f20ebf9e4184354d57fb44837, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033583514440186550, guid: e1a97f9f20ebf9e4184354d57fb44837, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751276753111444348, guid: e1a97f9f20ebf9e4184354d57fb44837, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8751276753111444348, guid: e1a97f9f20ebf9e4184354d57fb44837, type: 3}
       propertyPath: m_MaskInteraction
