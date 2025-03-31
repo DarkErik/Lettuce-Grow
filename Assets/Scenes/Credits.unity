@@ -857,17 +857,11 @@ MonoBehaviour:
   m_text: "<size=150%>Programming</size>\n\nOliver Diers\nErik Diers\nJohanna Schulte\nMichael
     Stach\n\n\n<size=150%>Assets</size>\n\nOliver Diers\nErik Diers\nMichael Stach\n<size=50%>Helped
     by:</size>\nOpenAI - ChatGPT\nDALLE\n\n\n<size=150%>Sounds</size>\n\nMichael
-    Stach\nJohanna Schulte <size=30%>1x Katsching</size>\n<size=50%>https://unitycodemonkey.com/kitchenchaoscourse.php</size>\n<size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-deadly-kombat-228835</size>\n<size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116</size>\n<size=50%>https://assetstore.unity.com/packages/audio/music/orchestral/open-air-adventure-light-music-pack-orchestra-piano-211800</size>\n\nQuality
-	<size=150%>Fonts</size>
-
-
-    Lemon
-    - Eduardo Tunni
-
-    Mercedes - Vladimir Nikolic
-    Assurance\n\nOliver Diers\nErik Diers\n\n<size=80%>\nSpecial Thanks to the student
-    council\nfor Applied Computer Science at the \nRuhr Universitaet Bochum\nfor
-    organizing this competition\n</size>\n\n<size=200%>Thank you for Playing!</size>"
+    Stach\nJohanna Schulte <size=30%>1x Katsching</size>\n<size=50%>https://unitycodemonkey.com/kitchenchaoscourse.php</size>\n<size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-deadly-kombat-228835</size>\n<size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116</size>\n<size=50%>https://assetstore.unity.com/packages/audio/music/orchestral/open-air-adventure-light-music-pack-orchestra-piano-211800</size>\n\n\n<size=150%>Fonts</size>\n\nLemon
+    - Eduardo Tunni\nMercedes - Vladimir Nikolic\n\n\n<size=150%>Quality Assurance</size>\n\nOliver
+    Diers\nErik Diers\n\n<size=80%>\nSpecial Thanks to the student council\nfor Applied
+    Computer Science at the \nRuhr Universitaet Bochum\nfor organizing this competition\n</size>\n\n<size=200%>Thank
+    you for Playing!</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
   m_sharedMaterial: {fileID: -6435251239669720936, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
