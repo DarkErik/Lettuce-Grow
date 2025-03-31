@@ -327,63 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe07751317e2e841bb741cdef1a6371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &533087464
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199341438695162510, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641297764653011656, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
-      propertyPath: m_Name
-      value: MusicManager (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: abdbfdc6bb32d04489face4fdb34c92f, type: 3}
 --- !u!1 &634516200
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 7876168284811918494, guid: 04db0c38fa5e796448e03784de81ba1b, type: 3}
       propertyPath: m_Name
       value: ScreenTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876168284811918494, guid: 04db0c38fa5e796448e03784de81ba1b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8307948368334914342, guid: 04db0c38fa5e796448e03784de81ba1b, type: 3}
       propertyPath: m_Pivot.x
@@ -903,60 +850,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=150%>Programming</size>
-
-
-    Oliver Diers
-
-    Erik Diers
-
-    Johanna
-    Schulte
-
-    Michael Stach
-
-
-
-    <size=150%>Assets</size>
-
-
-    Erik Diers
-
-    Michael
-    Stach
-
-    <size=50%>Helped by:</size>
-
-    OpenAI - ChatGPT
-
-    DALLE
-
-
-
-    <size=150%>Sounds</size>
-
-
-    Michael
-    Stach
-
-    Johanna Schulte <size=30%>1x Katsching</size>
-
-    <size=50%>https://unitycodemonkey.com/kitchenchaoscourse.php</size>
-
-    <size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-deadly-kombat-228835</size>
-
-    <size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116</size>
-
-    <size=50%>https://assetstore.unity.com/packages/audio/music/orchestral/open-air-adventure-light-music-pack-orchestra-piano-211800</size>
-
-
-
-
-
-
-
-    <size=200%>Thank
-    you for Playing!</size>'
+  m_text: "<size=150%>Programming</size>\n\nOliver Diers\nErik Diers\nJohanna Schulte\nMichael
+    Stach\n\n\n<size=150%>Assets</size>\n\nOliver Diers\nErik Diers\nMichael Stach\n<size=50%>Helped
+    by:</size>\nOpenAI - ChatGPT\nDALLE\n\n\n<size=150%>Sounds</size>\n\nMichael
+    Stach\nJohanna Schulte <size=30%>1x Katsching</size>\n<size=50%>https://unitycodemonkey.com/kitchenchaoscourse.php</size>\n<size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-deadly-kombat-228835</size>\n<size=50%>https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116</size>\n<size=50%>https://assetstore.unity.com/packages/audio/music/orchestral/open-air-adventure-light-music-pack-orchestra-piano-211800</size>\n\nQuality
+    Assurance\n\nOliver Diers\nErik Diers\n\n<size=80%>\nSpecial Thanks to the student
+    council\nfor Applied Computer Science at the \nRuhr Universitaet Bochum\nfor
+    organizing this competition\n</size>\n\n<size=200%>Thank you for Playing!</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
   m_sharedMaterial: {fileID: -6435251239669720936, guid: 784eae14c0e61234da4851d99e510aea, type: 2}
@@ -1042,4 +942,3 @@ SceneRoots:
   - {fileID: 42875736}
   - {fileID: 705709597}
   - {fileID: 998677390}
-  - {fileID: 533087464}
