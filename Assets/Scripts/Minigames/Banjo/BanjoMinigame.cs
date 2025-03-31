@@ -213,12 +213,13 @@ public class Banjo : GenericMinigame
         }
         if (deathNote != null)
         {
+            completedNotes = 0;
             notes.Remove(deathNote);
             Destroy(deathNote);
             deathNote = null;
         }
 
-
+        scoreField.text = $"{completedNotes} / {numberNotes}";
         Vector2 inputVector = controller.DirectionalButtons.ReadValue<Vector2>();
         
         if (hasInputReset && Mathf.Max(Mathf.Abs(inputVector.x), Mathf.Abs(inputVector.y)) > 0.8f) {
@@ -247,7 +248,7 @@ public class Banjo : GenericMinigame
 
     private IEnumerator NoteInterval()
     {
-        float waitingTime = Random.Range(0.5f, 1.5f);
+        float waitingTime = Random.Range(0.3f, 0.9f);
         yield return new WaitForSeconds(waitingTime);
         spawnNewNote = true;
     }
