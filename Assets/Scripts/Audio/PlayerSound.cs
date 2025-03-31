@@ -19,7 +19,7 @@ public class PlayerSound : MonoBehaviour
         if (footstepTimer < 0f)
         {
             footstepTimer = footstepTimerMax;
-
+            
             if (player.IsPlayerCurrentlyMoving())
             {
                 float volume = 1f;
