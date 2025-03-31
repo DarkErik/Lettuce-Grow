@@ -313,6 +313,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6330783026335342497}
     m_Modifications:
+    - target: {fileID: 1922309497269121714, guid: 27b491bf303f41d4195e1c7046ac90ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2382106364832228191, guid: 27b491bf303f41d4195e1c7046ac90ab, type: 3}
       propertyPath: m_Name
       value: TriggerRight
@@ -384,6 +388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6330783026335342497}
     m_Modifications:
+    - target: {fileID: 2230059216453097592, guid: 27b491bf303f41d4195e1c7046ac90ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2382106364832228191, guid: 27b491bf303f41d4195e1c7046ac90ab, type: 3}
       propertyPath: m_Name
       value: TriggerMiddle
@@ -498,6 +506,10 @@ PrefabInstance:
     - target: {fileID: 5355564163759190242, guid: 27b491bf303f41d4195e1c7046ac90ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389718401803265389, guid: 27b491bf303f41d4195e1c7046ac90ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

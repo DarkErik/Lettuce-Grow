@@ -1,10 +1,18 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SoundMenu : MonoBehaviour
 {
+
+    private PlayerInputActions inputWrapper;
+    private PlayerInputActions.UIActions controller;
+    private InputButtonWrapper escapeButton;
+    private bool initializedControls;
+
 
     [SerializeField] private Slider volume;
     [SerializeField] private Toggle whackySounds;
@@ -14,6 +22,33 @@ public class SoundMenu : MonoBehaviour
     [SerializeField] private GameObject wholeMenu;
 
     private bool menuOpened = false;
+
+
+    #region Input setup logic
+    private void InitControls() {
+
+        inputWrapper = new PlayerInputActions();
+        controller = inputWrapper.UI;
+
+        escapeButton = new InputButtonWrapper(controller.Escape);
+        escapeButton.onButtonDown += (InputAction.CallbackContext ctx) => { if (menuOpened) { CloseMenu(); } else { OpenMenu(); } };
+
+        initializedControls = true;
+        controller.Enable();
+    }
+
+
+    private void OnEnable() {
+        if (initializedControls) { controller.Enable(); }
+    }
+
+    private void OnDisable() {
+        if (initializedControls) { controller.Disable(); }
+    }
+
+    #endregion
+
+
 
     public void Awake() {
         easyMode.onValueChanged.AddListener((bool selected) => GameManager.easyMode = selected);
@@ -27,6 +62,9 @@ public class SoundMenu : MonoBehaviour
                 OpenMenu();
             }
         });
+
+        
+        InitControls();
     }
 
     public void ReadValues() {
@@ -35,20 +73,14 @@ public class SoundMenu : MonoBehaviour
         easyMode.isOn = GameManager.easyMode;
     }
 
-    public void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (menuOpened)
-                CloseMenu();
-            else
-                OpenMenu();
 
-        }
-    }
 
     public void CloseMenu() {
         if (menuOpened) {
             menuOpened = false;
             wholeMenu.SetActive(false);
+
+            Time.timeScale = 1;
         }
     }
 
@@ -57,6 +89,8 @@ public class SoundMenu : MonoBehaviour
             menuOpened = true;
             ReadValues();
             wholeMenu.SetActive(true);
+
+            //Time.timeScale = 0;
         }
     }
 

@@ -11,12 +11,14 @@ public class WateringMinigame : GenericMinigame {
     private InputButtonWrapper interactButton;
     private MouseInputHelper mouseInputHelper;
     private bool initializedControls;
-    [SerializeField] private Sprite bgImage;
 
     private static System.Random random = new System.Random();
 
 
     #region Inspector parameters
+
+    [SerializeField] 
+    private Sprite bgImage;
 
     [SerializeField]
     private GameObject wateringCan;

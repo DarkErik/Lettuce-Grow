@@ -5618,10 +5618,10 @@ MonoBehaviour:
   numPlants: {x: 2, y: 3}
   normDistrValues: {x: 2.6, y: 0.6}
   closeDelay: 0.5
-  chanceForVariant: 1
+  chanceForVariant: 0.5
   windParticleSystem: {fileID: 4643072545834350862}
   forceField: {fileID: 8748659751804614725}
-  windSpeed: {x: -1, y: -3.5}
+  windSpeed: {x: -1, y: -2}
 --- !u!1 &7070649092561376662
 GameObject:
   m_ObjectHideFlags: 0
