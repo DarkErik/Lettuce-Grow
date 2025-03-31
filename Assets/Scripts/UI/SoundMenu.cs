@@ -1,7 +1,9 @@
 using Player;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -18,6 +20,8 @@ public class SoundMenu : MonoBehaviour
     [SerializeField] private Toggle whackySounds;
     [SerializeField] private Toggle easyMode;
     [SerializeField] private Button continueBtn;
+    [SerializeField] private Button exitToMainMenu;
+    [SerializeField] private Button confirmExit;
     [SerializeField] private Button menuOpenBtn;
     [SerializeField] private GameObject wholeMenu;
 
@@ -55,6 +59,9 @@ public class SoundMenu : MonoBehaviour
         whackySounds.onValueChanged.AddListener(SetSounds);
         volume.onValueChanged.AddListener(SetVolume);
         continueBtn.onClick.AddListener(CloseMenu);
+        exitToMainMenu.onClick.AddListener(() => { confirmExit.gameObject.SetActive(true); exitToMainMenu.enabled = false; EventSystem.current.SetSelectedGameObject(confirmExit.gameObject); });
+        confirmExit.onClick.AddListener(() => { Time.timeScale = 1; ScreenTransition.Instance.LoadScene("MainMenu"); });
+
         menuOpenBtn.onClick.AddListener(() => {
             if (menuOpened)
                 CloseMenu();
@@ -80,6 +87,10 @@ public class SoundMenu : MonoBehaviour
             menuOpened = false;
             wholeMenu.SetActive(false);
 
+            EventSystem.current.SetSelectedGameObject(null);
+            exitToMainMenu.enabled = true;
+            confirmExit.gameObject.SetActive(false);
+
             Time.timeScale = 1;
         }
     }
@@ -90,7 +101,9 @@ public class SoundMenu : MonoBehaviour
             ReadValues();
             wholeMenu.SetActive(true);
 
-            //Time.timeScale = 0;
+            EventSystem.current.SetSelectedGameObject(whackySounds.gameObject);
+
+            Time.timeScale = 0;
         }
     }
 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
@@ -13,6 +15,9 @@ public class MainMenuController : MonoBehaviour
         if (Input.anyKeyDown) {
             anykeyAnim.SetTrigger("dissapear");
             menuAnim.SetTrigger("show");
+
+            this.Invoke(nameof(WaitForControllerButtonReleaseInputDelay), 1.0f);
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -33,4 +38,9 @@ public class MainMenuController : MonoBehaviour
     public void RollCredits() {
         ScreenTransition.Instance.LoadScene("Credits");
     }
+
+    private void WaitForControllerButtonReleaseInputDelay() {
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("StartGame"));
+    }
+
 }
